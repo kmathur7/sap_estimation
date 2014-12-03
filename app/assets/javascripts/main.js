@@ -6,8 +6,8 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		$http.get('./landscape').success(function(data){
 			$scope.landscapes=data.landscape;
 		});
-		$http.get('../json/catalog.json').success(function(data){
-			$scope.catalogs=data;
+		$http.get('./catalog').success(function(data){
+			$scope.catalogs=data.catalog;
 		});
 		$http.get('../json/product.json').success(function(data){
 			$scope.products=data;
