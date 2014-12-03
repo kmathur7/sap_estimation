@@ -3,8 +3,8 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
  
 
   .controller('InputCtrl',['$scope','$http','$rootScope',function($scope,$http,$rootScope){
-		$http.get('../json/landscape.json').success(function(data){
-			$scope.landscapes=data;
+		$http.get('./landscape').success(function(data){
+			$scope.landscapes=data.landscape;
 		});
 		$http.get('../json/catalog.json').success(function(data){
 			$scope.catalogs=data;
