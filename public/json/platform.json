@@ -1,0 +1,22 @@
+[
+  {
+    "id":1,
+    "name":"ABAP"
+  },
+  {
+    "id":2,
+    "name":"JAVA"
+  },
+  {
+    "id":3,
+    "name":"ABAP + JAVA"
+  },
+  {
+    "id":4,
+    "name":"BO Platform"
+  },
+  {
+    "id":5,
+    "name":"Standalone"
+  }
+]

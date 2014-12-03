@@ -1,0 +1,30 @@
+[
+  {
+    "id":1,
+    "landscape":"Production",
+    "catalog":"Bundle A",
+    "product":"Solution Manager",
+    "platform":"Standalone",
+    "component":[
+                {
+                  "name":"Standalone SOLMAN Server"
+                }
+                
+                ],
+    "scale":1,
+    "serverdetails":[
+                        {
+                            "name":"Standalone SOLMAN Server-1"
+                        },
+                        {
+                            "name":"Standalone SOLMAN Server-2"
+                        }
+                    ],
+    "noservers":2,
+    "vCPU":1,
+    "vRAM":8,
+    "netio":500,
+    "iops":0,
+    "vDisk":200
+  }
+]

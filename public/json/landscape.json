@@ -1,0 +1,22 @@
+[
+  {
+    "id":1,
+    "name":"Production"
+  },
+  {
+    "id":2,
+    "name":"Pre-production"
+  },
+  {
+    "id":3,
+    "name":"Development"
+  },
+  {
+    "id":4,
+    "name":"Staging"
+  },
+  {
+    "id":5,
+    "name":"Testing"
+  }
+]

@@ -11,5 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require angular
+//= require bootstrap
+//= scripts
+//= require main
+//= require loading-bar
 //= require_tree .

@@ -1,0 +1,18 @@
+[
+  {
+    "id":1,
+    "name":"SAP ECC"
+  },
+  {
+    "id":2,
+    "name":"SAP Content Server"
+  },
+  {
+    "id":3,
+    "name":"NetWeaver"
+  },
+  {
+    "id":4,
+    "name":"Solution Manager"
+  }
+]
