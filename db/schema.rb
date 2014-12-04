@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(version: 20141202193011) do
 
   create_table "bladeparameters", force: true do |t|
-    t.integer "pCore"
-    t.integer "pRAM"
-    t.integer "pNIC"
+    t.integer "pcore"
+    t.integer "pram"
+    t.integer "pnic"
   end
 
   create_table "catalogs", force: true do |t|
@@ -31,17 +31,17 @@ ActiveRecord::Schema.define(version: 20141202193011) do
 
   create_table "designrationales", force: true do |t|
     t.string  "landscape"
-    t.integer "pCore"
-    t.integer "pRAM"
-    t.integer "pNIC"
+    t.integer "pcore"
+    t.integer "pram"
+    t.integer "pnic"
   end
 
   create_table "infracatalogs", force: true do |t|
     t.string  "catalog"
     t.string  "subcatalog"
-    t.integer "vCPU"
-    t.integer "vRAM"
-    t.integer "vNIC"
+    t.integer "vcpu"
+    t.integer "vram"
+    t.integer "vnic"
   end
 
   create_table "landscapes", force: true do |t|
@@ -54,15 +54,15 @@ ActiveRecord::Schema.define(version: 20141202193011) do
     t.string  "platform"
     t.integer "saps"
     t.integer "memory"
-    t.integer "IO"
-    t.integer "IOPS"
+    t.integer "io"
+    t.integer "iops"
     t.integer "disksize"
   end
 
   create_table "resourceweightages", force: true do |t|
-    t.integer "CPU"
-    t.integer "RAM"
-    t.integer "NIC"
+    t.integer "cpu"
+    t.integer "ram"
+    t.integer "nic"
   end
 
 end
