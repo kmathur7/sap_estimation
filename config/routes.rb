@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   resources :landscape
   resources :catalog
+  resources :qsizer
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
