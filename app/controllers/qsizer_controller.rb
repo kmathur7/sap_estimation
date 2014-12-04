@@ -1,5 +1,5 @@
 class QsizerController < ApplicationController
   def show
-    @data = QuickSizer.where("catalog_id=?",1).pluck(:product) 
+    @data = QuickSizer.where("catalog=?",params[:id]).pluck(:product) 
   end
 end

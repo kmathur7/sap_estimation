@@ -27,7 +27,7 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		};
 		$scope.setCatalog=function(catalog){
 			$scope.selection.catalog=catalog.name;
-      $http.get('../qsizer/'+'kunal').success(function(data){
+      $http.get('../qsizer/'+catalog.name).success(function(data){
 			$scope.products=data.qsizer;
 		});
 			$('#collapseTwo').collapse('hide');
