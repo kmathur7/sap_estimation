@@ -160,11 +160,11 @@
   							<td class="hidden-xs">{{data.platform}}</td>
   							<td><div ng-repeat="component in data.component">{{component.name}}</div></td>
                 <td class="hidden-xs hidden-sm"><div ng-repeat="scale in data.scale">{{scale.scale}}</div></td>
-  					    <td class="hidden-xs"><div ng-repeat="cpu in data.vCPU">{{cpu.vCPU}}</div></td>
-                <td class="hidden-xs"><div ng-repeat="ram in data.vRAM">{{ram.vRAM}}</div></td>
+  					    <td class="hidden-xs"><div ng-repeat="cpu in data.vcpu">{{cpu.vcpu}}</div></td>
+                <td class="hidden-xs"><div ng-repeat="ram in data.vram">{{ram.vram}}</div></td>
                 <td class="hidden-xs hidden-sm"><div ng-repeat="io in data.netio">{{io.netio}}</div></td>
                 <td class="hidden-xs hidden-sm"><div ng-repeat="inputs in data.iops">{{inputs.iops}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="disk in data.vDisk">{{disk.vDisk}}</div></td>
+                <td class="hidden-xs hidden-sm"><div ng-repeat="disk in data.vdisk">{{disk.vdisk}}</div></td>
                 <td class="hidden-xs hidden-sm"><div ng-repeat="cat in data.scatalog">{{cat.catalog}}</div></td>
                 <td class="hidden-xs hidden-sm">
                       <div ng-repeat="cat in data.scatalog">

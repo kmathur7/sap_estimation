@@ -2,29 +2,109 @@
   {
     "id":1,
     "landscape":"Production",
-    "catalog":"Bundle A",
-    "product":"Solution Manager",
-    "platform":"Standalone",
+    "catalog":"Bundle B",
+    "product":"SAP ECC",
+    "platform":"ABAP",
     "component":[
                 {
-                  "name":"Standalone SOLMAN Server"
+                  "name":"Application Server"
+                },
+                {
+                  "name":"Database Server"
+                },
+                {
+                  "name":"SCS Server"
                 }
                 
                 ],
-    "scale":1,
+    "scale":    [
+                    {
+                        "scale":1
+                    },
+                    {
+                        "scale":1
+                    },
+                    {
+                        "scale":1
+                    }
+                ],
     "serverdetails":[
                         {
-                            "name":"Standalone SOLMAN Server-1"
+                            "name":"Application Server-1"
                         },
                         {
-                            "name":"Standalone SOLMAN Server-2"
+                            "name":"Database Server-1"
+                        },
+                        {
+                            "name":"SCS Server-1"
                         }
                     ],
-    "noservers":2,
-    "vCPU":1,
-    "vRAM":8,
-    "netio":500,
-    "iops":0,
-    "vDisk":200
+    "noservers":3,
+    "vcpu":[
+                {
+                    "vcpu":6
+                },
+                {
+                    "vcpu":4
+                },
+                {
+                    "vcpu":3
+                }
+            ],
+    "vram": [
+                {
+                    "vram":42
+                },
+                {
+                    "vram":23
+                },
+                {
+                    "vram":21
+                }
+            ],
+    "netio":[
+                {
+                    "netio":4875
+                },
+                {
+                    "netio":2625
+                },
+                {
+                    "netio":2438
+                }
+            ],
+    "iops": [
+                {
+                    "iops":0
+                },
+                {
+                    "iops":16000
+                },
+                {
+                    "iops":0
+                }
+            ],
+    "vdisk":[
+                {
+                    "vdisk":200
+                },
+                {
+                    "vdisk":1200
+                },
+                {
+                    "vdisk":200
+                }
+            ],
+    "scatalog":[
+                {
+                    "catalog":"Large2"
+                },
+                {
+                    "catalog":"Medium2"
+                },
+                {
+                    "catalog":"Medium2"
+                }
+            ]
   }
 ]
