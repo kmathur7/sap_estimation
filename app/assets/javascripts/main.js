@@ -11,7 +11,7 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		});
 		
 		
-		$scope.selection={
+		var selection={
 			landscape:"",
 			catalog:"",
 			product:"",
@@ -20,13 +20,13 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		};
 
 		$scope.setLandscape=function(landscape){
-			$scope.selection.landscape=landscape.name;
+			selection.landscape=landscape.name;
 			$('#collapseOne').collapse('hide');
 			$('#collapseTwo').collapse('show');
 
 		};
 		$scope.setCatalog=function(catalog){
-			$scope.selection.catalog=catalog.name;
+			selection.catalog=catalog.name;
       $http.get('../qsizer/'+catalog.name).success(function(data){
 			$scope.products=data.qsizer;
 		});
@@ -35,16 +35,16 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 
 		};
 		$scope.setProduct=function(product){
-			$scope.selection.product=product.name;
-      $http.get('../json/platform.json').success(function(data){
-			$scope.platforms=data;
+			selection.product=product.name;
+      $http.get('../qsizer/'+selection.catalog+'/'+product.name).success(function(data){
+			$scope.platforms=data.qsizer;
 		});
 			$('#collapseThree').collapse('hide');
 			$('#collapseFour').collapse('show');
 
 		};
 		$scope.setPlatform=function(platform){
-			$scope.selection.platform=platform.name;
+			selection.platform=platform.name;
       $http.get('../json/components.json').success(function(data){
 				$scope.components=data;
 		});

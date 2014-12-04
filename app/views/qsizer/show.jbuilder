@@ -1,3 +1,3 @@
-json.qsizer @data do |data|
+json.qsizer @product do |data|
   json.name data
 end
