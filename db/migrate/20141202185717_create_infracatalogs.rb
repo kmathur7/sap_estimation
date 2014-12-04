@@ -4,9 +4,9 @@ class CreateInfracatalogs < ActiveRecord::Migration
 
       t.string :catalog
       t.string :subcatalog
-      t.integer :vCPU
-      t.integer :vRAM
-      t.integer :vNIC
+      t.integer :vcpu
+      t.integer :vram
+      t.integer :vnic
     end
   end
 end

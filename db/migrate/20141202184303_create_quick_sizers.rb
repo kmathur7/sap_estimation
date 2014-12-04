@@ -7,8 +7,8 @@ class CreateQuickSizers < ActiveRecord::Migration
       t.string :platform
       t.integer :saps
       t.integer :memory
-      t.integer :IO
-      t.integer :IOPS
+      t.integer :io
+      t.integer :iops
       t.integer :disksize
     end
   end

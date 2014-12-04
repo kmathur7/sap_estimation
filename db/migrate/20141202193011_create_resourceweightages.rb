@@ -2,9 +2,9 @@ class CreateResourceweightages < ActiveRecord::Migration
   def change
     create_table :resourceweightages do |t|
 
-      t.integer :CPU
-      t.integer :RAM
-      t.integer :NIC
+      t.integer :cpu
+      t.integer :ram
+      t.integer :nic
     end
   end
 end

@@ -2,9 +2,9 @@ class CreateBladeparameters < ActiveRecord::Migration
   def change
     create_table :bladeparameters do |t|
 
-      t.integer :pCore
-      t.integer :pRAM
-      t.integer :pNIC
+      t.integer :pcore
+      t.integer :pram
+      t.integer :pnic
     end
   end
 end
