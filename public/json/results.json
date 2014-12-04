@@ -1,0 +1,7 @@
+{
+    "id":1,
+    "physical_servers":1,
+    "failover_capacity":2,
+    "no_physical_servers":3,
+    "total_servers":3
+  }

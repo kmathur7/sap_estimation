@@ -107,7 +107,7 @@ img.grayscale {
 
 .header {
   height: 100%;
-  background: #f68076 url('../images/pt_topo_l.png') repeat center center fixed;
+  background: #f68076 url('../assets/pt_topo_l.png') repeat center center fixed;
 }
 
 /* use alt in navbar and header for different color */
@@ -140,7 +140,7 @@ img.grayscale {
 }
 
 .bright {
-  background: #dbdbdb url('../images/pt_topo.png') repeat center center fixed; 
+  background: #dbdbdb url('../assets/pt_topo.png') repeat center center fixed; 
   color:#777;
 }
 
@@ -175,7 +175,7 @@ img.grayscale {
   padding-top:7%;
   height: 100%;
   width: 100%;
-  background: url('../images/bg_suburb.jpg') no-repeat center center fixed; 
+  background: url('../assets/bg_suburb.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -211,6 +211,40 @@ footer {
 .resulttext{
   text-align:right;
 }
+.linkcolor{
+  color:white;
+}
+.linkcolor:hover{
+  color:white;
+}
+/* -- media 768px --*/
+@media (min-width: 768px) {
+  .containers_width{
+    width: 750px;
+  }
+  .increment{
+    padding-left: 44px;
+  }
+}
+/* -- media 992px --*/
+@media (min-width: 992px) {
+  .containers_width{
+    width: 970px;
+  }
+  .increment{
+    padding-left: 640px;
+  }
+}
+/* -- media 1200px --*/
+@media (min-width: 1200px) {
+  .containers_width{
+    width: 65%;
+  }
+  .increment{
+    padding-left: 640px;
+  }
+}
+
 
 
 /* -- end custom css for Bootstrap 3.x --*/

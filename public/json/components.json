@@ -1,0 +1,14 @@
+[
+  {
+    "id":1,
+    "name":"Application Server"
+  },
+  {
+    "id":2,
+    "name":"Database Server"
+  },
+  {
+    "id":3,
+    "name":"SCS Server"
+  }
+]

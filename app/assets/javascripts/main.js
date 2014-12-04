@@ -9,12 +9,8 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		$http.get('./catalog').success(function(data){
 			$scope.catalogs=data.catalog;
 		});
-		$http.get('../json/product.json').success(function(data){
-			$scope.products=data;
-		});
-		$http.get('../json/platform.json').success(function(data){
-			$scope.platforms=data;
-		});
+		
+		
 		$scope.selection={
 			landscape:"",
 			catalog:"",
@@ -31,28 +27,32 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		};
 		$scope.setCatalog=function(catalog){
 			$scope.selection.catalog=catalog.name;
+      $http.get('../json/product.json').success(function(data){
+			$scope.products=data;
+		});
 			$('#collapseTwo').collapse('hide');
 			$('#collapseThree').collapse('show');
 
 		};
 		$scope.setProduct=function(product){
 			$scope.selection.product=product.name;
+      $http.get('../json/platform.json').success(function(data){
+			$scope.platforms=data;
+		});
 			$('#collapseThree').collapse('hide');
 			$('#collapseFour').collapse('show');
 
 		};
 		$scope.setPlatform=function(platform){
 			$scope.selection.platform=platform.name;
+      $http.get('../json/components.json').success(function(data){
+				$scope.components=data;
+		});
 			$('#collapseFour').collapse('hide');
 			$('#collapseFive').collapse('show');
 
 		};
-		$scope.setScale=function(scale){
-			$scope.selection.scale=scale;
-			$('#collapseFive').collapse('hide');
-			
-
-		};
+		
 		$scope.calculate=function(){
 			$rootScope.$broadcast('analyticsData');
 		};
@@ -68,4 +68,35 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		});
 		
 		});
-	}]);
+    $scope.calculate=function(){
+			$rootScope.$broadcast('resultData');
+		};
+	}])
+
+  .controller('ResultsCtrl',function($scope,$http){
+		$scope.$on('resultData',function(event){
+
+			$http.get('../json/results.json').success(function(data){
+			$scope.results=data;
+			
+		});
+		
+		});
+		
+	})
+
+  .directive('upVote', function(){
+  return    {
+    restrict:'E',
+    scope:{
+      min: '=',
+      max:'=',
+      value:'='
+    },
+    template: '<span ng-init="value=1">' + 
+      '<button class="btn btn-primary" ng-click="value = value + 1" ng-disabled="value >= max">+</button>' + 
+      '<span>{{value}}</span>' +
+      '<button class="btn btn-primary" ng-click="value = value - 1" ng-disabled="value <= min">-</button>' + 
+    '</span>'
+  }
+  });
