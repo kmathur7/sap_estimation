@@ -53,8 +53,9 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
       selection.component=$scope.components
       
       $http.post('./qsizer',selection)
-	       .success(function(){
-		                            console.log("sent");
+	       .success(function(data){
+		                            $scope.info=data.data;
+                                
 		                        });
 			$rootScope.$broadcast('analyticsData');
 		};

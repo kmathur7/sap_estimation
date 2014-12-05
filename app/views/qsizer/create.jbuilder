@@ -1,3 +1,3 @@
-json.qsizer @a do |data|
-  json.data data
-end
+json.qsizer 
+json.data @input
+
