@@ -11,13 +11,7 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		});
 		
 		
-		var selection={
-			landscape:"",
-			catalog:"",
-			product:"",
-			platform:"",
-			scale:""
-		};
+		
 
 		$scope.setLandscape=function(landscape){
 			selection.landscape=landscape.name;
@@ -45,15 +39,23 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		};
 		$scope.setPlatform=function(platform){
 			selection.platform=platform.name;
-      $http.get('../json/components.json').success(function(data){
-				$scope.components=data;
+      $http.get('../qsizer/'+selection.product+'/'+selection.platform+'/2').success(function(data){
+				$scope.components=data.qsizer;
+        
 		});
 			$('#collapseFour').collapse('hide');
 			$('#collapseFive').collapse('show');
+  
 
 		};
 		
 		$scope.calculate=function(){
+      selection.component=$scope.components
+      
+      $http.post('./qsizer',selection)
+	       .success(function(){
+		                            console.log("sent");
+		                        });
 			$rootScope.$broadcast('analyticsData');
 		};
 
@@ -78,6 +80,7 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 
 			$http.get('../json/results.json').success(function(data){
 			$scope.results=data;
+        
 			
 		});
 		
@@ -100,3 +103,12 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
     '</span>'
   }
   });
+var selection={
+			landscape:"",
+			catalog:"",
+			product:"",
+			platform:"",
+			component:{
+      
+                }
+		};

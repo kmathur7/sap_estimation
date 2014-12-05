@@ -27,7 +27,7 @@ Catalog.create!([
 QuickSizer.create!([
   {id: 1, catalog: "Bundle A", product: "SAP ECC", platform: "ABAP", saps: 20000, memory: 64, io: 4000, iops: 5000, disksize: 1000},
   {id: 2, catalog: "Bundle A", product: "SAP Content Server", platform: "STANDALONE", saps: 2000, memory: 16, io: 1000, iops: 1200, disksize: 300},
-  {id: 3, catalog: "Bundle A", product: "NewWeaver", platform: "JAVA", saps: 7000, memory: 48, io: 2500, iops: 3000, disksize: 300},
+  {id: 3, catalog: "Bundle A", product: "NetWeaver", platform: "JAVA", saps: 7000, memory: 48, io: 2500, iops: 3000, disksize: 300},
   {id: 4, catalog: "Bundle A", product: "Solution Manager", platform: "STANDALONE", saps: 1000, memory: 16, io: 1000, iops: 1200, disksize: 300},
   {id: 5, catalog: "Bundle B", product: "SAP ECC", platform: "ABAP", saps: 40000, memory: 128, io: 15000, iops: 16000, disksize: 1000},
   {id: 6, catalog: "Bundle B", product: "SAP Content Server", platform: "STANDALONE", saps: 4000, memory: 16, io: 2500, iops: 3000, disksize: 300},
