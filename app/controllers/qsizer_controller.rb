@@ -4,6 +4,10 @@ class QsizerController < ApplicationController
   end
   
   def platforms
-    @platform = QuickSizer.where("catalog=? AND product=?",params[:id],params[:product]).pluck(:platform)
+    @platform = QuickSizer.where("catalog=? AND product=?",params[:catalog],params[:product]).pluck(:platform)
+  end
+  
+  def components
+    @components = Component.where("product=? AND platform=?",params[:product],params[:platform]).pluck(:servername)
   end
 end
