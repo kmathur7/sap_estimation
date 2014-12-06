@@ -9,6 +9,7 @@ Landscape.delete_all
 Catalog.delete_all
 QuickSizer.delete_all
 Component.delete_all
+Infracatalog.delete_all
 
 Landscape.create!([
   {id: 1, name: "Production"},
@@ -100,3 +101,30 @@ Component.create!([
  
   
   ])
+
+Infracatalog.create!([
+  {id: 1, catalog: "Extra Small", subcatalog: "ExtraSmall1", vcpu: 1, vram: 4, vnic: 3},
+  {id: 2, catalog: "Extra Small", subcatalog: "ExtraSmall2", vcpu: 1, vram: 8, vnic: 3},
+  {id: 3, catalog: "Extra Small", subcatalog: "ExtraSmall3", vcpu: 1, vram: 16, vnic: 3},
+  {id: 4, catalog: "Small", subcatalog: "Small1", vcpu: 2, vram: 8, vnic: 3},
+  {id: 5, catalog: "Small", subcatalog: "Small2", vcpu: 2, vram: 16, vnic: 3},
+  {id: 6, catalog: "Small", subcatalog: "Small3", vcpu: 2, vram: 32, vnic: 3},
+  {id: 7, catalog: "Medium", subcatalog: "Medium1", vcpu: 4, vram: 16, vnic: 3},
+  {id: 8, catalog: "Medium", subcatalog: "Medium2", vcpu: 4, vram: 32, vnic: 3},
+  {id: 9, catalog: "Medium", subcatalog: "Medium3", vcpu: 4, vram: 64, vnic: 3},
+  {id: 10, catalog: "Large", subcatalog: "Large1", vcpu: 8, vram: 32, vnic: 3},
+  {id: 11, catalog: "Large", subcatalog: "Large2", vcpu: 8, vram: 64, vnic: 3},
+  {id: 12, catalog: "Large", subcatalog: "Large3", vcpu: 8, vram: 96, vnic: 3},
+  {id: 13, catalog: "Extra Large", subcatalog: "ExtraLarge1", vcpu: 12, vram: 64, vnic: 3},
+  {id: 14, catalog: "Extra Large", subcatalog: "ExtraLarge2", vcpu: 12, vram: 96, vnic: 3},
+  {id: 15, catalog: "Extra Large", subcatalog: "ExtraLarge3", vcpu: 12, vram: 128, vnic: 3},
+  {id: 16, catalog: "Double Extra Large", subcatalog: "DoubleExtraLarge1", vcpu: 24, vram: 96, vnic: 3},
+  {id: 17, catalog: "Double Extra Large", subcatalog: "DoubleExtraLarge2", vcpu: 24, vram: 128, vnic: 3},
+  {id: 18, catalog: "Double Extra Large", subcatalog: "DoubleExtraLarge3", vcpu: 24, vram: 192, vnic: 3},
+  {id: 19, catalog: "Custom", subcatalog: "Custom1", vcpu: 24, vram: 256, vnic: 3},
+  {id: 20, catalog: "Custom", subcatalog: "Custom2", vcpu: 24, vram: 512, vnic: 3},
+  {id: 21, catalog: "Custom", subcatalog: "Custom3", vcpu: 24, vram: 1024, vnic: 3}
+ 
+  
+  ])
+

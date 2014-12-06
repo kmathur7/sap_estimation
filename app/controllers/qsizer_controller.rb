@@ -29,11 +29,14 @@ class QsizerController < ApplicationController
       while $i < component[:scale] do
       data = Hash.new
       data['server'] = component[:name]
-      data['vcpu'] = vCPU(server,saps,saps_per_core)
-      data['vram'] = vRAM(server,memory)
+      vcpu = vCPU(server,saps,saps_per_core)
+      data['vcpu'] = vcpu
+      vram = vRAM(server,memory)
+      data['vram'] = vram
       data['netio'] = netIO(server,io)
       data['iops'] = iops(server,iops)
       data['vdisk'] =vDisk(server,disksize)
+      data['catalog'] = findCatalog(cpu(vcpu),ram(vram))
         $i+=1
       @input << data
       end
@@ -105,5 +108,63 @@ class QsizerController < ApplicationController
         end
     return vdisk
   end
+  
+  #Function to Convert vCPU value to nearest 1,2,4,8,12,24 value
+  def cpu(vcpu)
+          if(vcpu<=1)
+                cpu=1
+          elsif(vcpu<=2)
+                cpu=2
+          elsif(vcpu<=4)
+                cpu=4
+          elsif(vcpu<=8)
+                cpu=8
+          elsif(vcpu<=12)
+                cpu=12
+          elsif(vcpu<=24)
+                cpu=24
+          else
+               cpu=vcpu
+      end
+    return cpu
+  end
+  #Function to Convert vRAM value to nearest 1024,512,256,192,128,96,64,32,16,8,4 value
+  def ram(vram)
+          if(vram<=4)
+                ram=4
+          elsif(vram<=8)
+                ram=8
+          elsif(vram<=16)
+                ram=16
+          elsif(vram<=32)
+                ram=32
+          elsif(vram<=64)
+                ram=64
+          elsif(vram<=96)
+                ram=96
+          elsif(vram<=128)
+                ram=128
+          elsif(vram<=192)
+                ram=192
+          elsif(vram<=256)
+                ram=256
+          elsif(vram<=512)
+                ram=512
+          elsif(vram<=1024)
+                ram=1024
+         
+          else
+               ram=vram
+      end
+    return ram
+  end
+  
+  #function to find subcatalog value given the vcpu, vram and vnic values
+  def findCatalog(vcpu,vram)
+    catalog = Infracatalog.where("vcpu=? AND vram=?",vcpu,vram).pluck(:subcatalog).join(" ")
+    return catalog
+  end
+  
+  
 
 end
