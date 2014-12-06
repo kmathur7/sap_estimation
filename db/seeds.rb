@@ -10,6 +10,9 @@ Catalog.delete_all
 QuickSizer.delete_all
 Component.delete_all
 Infracatalog.delete_all
+Designrationale.delete_all
+Bladeparameter.delete_all
+Resourceweightage.delete_all
 
 Landscape.create!([
   {id: 1, name: "Production"},
@@ -25,6 +28,7 @@ Catalog.create!([
   {id: 3, name: "Bundle C"}
   
   ])
+
 QuickSizer.create!([
   {id: 1, catalog: "Bundle A", product: "SAP ECC", platform: "ABAP", saps: 20000, memory: 64, io: 4000, iops: 5000, disksize: 1000},
   {id: 2, catalog: "Bundle A", product: "SAP Content Server", platform: "STANDALONE", saps: 2000, memory: 16, io: 1000, iops: 1200, disksize: 300},
@@ -43,9 +47,7 @@ QuickSizer.create!([
   {id: 15, catalog: "Bundle C", product: "SAP SUP", platform: "STANDALONE", saps: 3000, memory: 32, io: 4000, iops: 5000, disksize: 300},
   {id: 16, catalog: "Bundle C", product: "SAP SCM", platform: "ABAP", saps: 5000, memory: 24, io: 4000, iops: 5000, disksize: 400},
   {id: 17, catalog: "Bundle C", product: "SCM Live Cache", platform: "STANDALONE", saps: 1000, memory: 16, io: 1000, iops: 1200, disksize: 300}
-
-  
-  ])
+])
 
 Component.create!([
   {id: 1, product: "SAP ECC", platform: "ABAP",servername:"Application Server"},
@@ -97,10 +99,7 @@ Component.create!([
   {id: 47, product: "SCM Live Cache", platform: "STANDALONE",servername:"Standalone LC Server"},
   {id: 48, product: "BPC for BI", platform: "STANDALONE",servername:"Standalone BPC Server"},
   {id: 49, product: "SAP Content Server", platform: "STANDALONE",servername:"Standalone SCS Server"},
-
- 
-  
-  ])
+])
 
 Infracatalog.create!([
   {id: 1, catalog: "Extra Small", subcatalog: "ExtraSmall1", vcpu: 1, vram: 4, vnic: 3},
@@ -124,7 +123,21 @@ Infracatalog.create!([
   {id: 19, catalog: "Custom", subcatalog: "Custom1", vcpu: 24, vram: 256, vnic: 3},
   {id: 20, catalog: "Custom", subcatalog: "Custom2", vcpu: 24, vram: 512, vnic: 3},
   {id: 21, catalog: "Custom", subcatalog: "Custom3", vcpu: 24, vram: 1024, vnic: 3}
- 
-  
+ ])
+
+Designrationale.create!([
+  {id: 1, landscape: "Production", pcore: 1, pram: 1, pnic: 10},
+  {id: 2, landscape: "Pre-Production", pcore: 2, pram: 2, pnic: 10},
+  {id: 3, landscape: "Development", pcore: 2, pram: 2, pnic: 10},
+  {id: 4, landscape: "Staging", pcore: 2, pram: 2, pnic: 10},
+  {id: 5, landscape: "Testing", pcore: 2, pram: 2, pnic: 10}
+   ])
+
+Bladeparameter.create!([
+  {id: 1, pcore: 16,pram: 192, pnic: 10},
+  ])
+
+Resourceweightage.create!([
+  {id: 1, cpu: 100,ram: 0, nic: 0},
   ])
 

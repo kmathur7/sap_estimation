@@ -168,9 +168,7 @@
                 <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.catalog}}</div></td>
                 <td class="hidden-xs hidden-sm">
                       <div ng-repeat="cat in data">
-                            <select name="select">
-                                    <option value="value1">Virtual</option> 
-                                    <option value="value2" selected>Physical</option>
+                            <select ng-model="cat.type" ng-options="item for item in options">
                             </select>
                       </div>
                  </td>

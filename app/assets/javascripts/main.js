@@ -83,14 +83,14 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 
   .controller('AnalyticsCtrl',['$scope','$http','$rootScope','dataService',function($scope,$http,$rootScope,dataService){
 		$scope.$on('analyticsData',function(event){
-      console.log("recieved");
-      $scope.selection=dataService.getSelection();
-			  $scope.data=dataService.getCalculation();
-      
-		
-		});
+          console.log("recieved");
+          $scope.selection=dataService.getSelection();
+			    $scope.data=dataService.getCalculation();
+    });
+    $scope.options = ['Physical','Virtual'];
     $scope.calculate=function(){
-			$rootScope.$broadcast('resultData');
+			  $rootScope.$broadcast('resultData');
+        console.log($scope.data);
 		};
 	}])
 
