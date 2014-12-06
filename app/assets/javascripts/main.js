@@ -1,8 +1,23 @@
 angular.module('Saps',['ngRoute','angular-loading-bar'])
 
- 
+   .factory('dataService',function(){
+		var selection;
+    var calculation;
+		return {
+			setData : function(select,calculate){
+				selection=select;
+        calculation=calculate;
+			},
+			getSelection : function(){
+				return selection;
+			},
+      getCalculation : function(){
+				return calculation;
+			}
+		};
+	})
 
-  .controller('InputCtrl',['$scope','$http','$rootScope',function($scope,$http,$rootScope){
+  .controller('InputCtrl',['$scope','$http','$rootScope','dataService',function($scope,$http,$rootScope,dataService){
 		$http.get('./landscape').success(function(data){
 			$scope.landscapes=data.landscape;
 		});
@@ -54,21 +69,24 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
       
       $http.post('./qsizer',selection)
 	       .success(function(data){
-		                            $scope.info=data.data;
+                               console.log(data);
+		                           dataService.setData(selection,data.qsizer);
+                               $rootScope.$broadcast('analyticsData');
+
                                 
 		                        });
-			$rootScope.$broadcast('analyticsData');
+			
+      console.log("sent");
 		};
 
 	}])
 
-  .controller('AnalyticsCtrl',['$scope','$http','$rootScope',function($scope,$http,$rootScope){
+  .controller('AnalyticsCtrl',['$scope','$http','$rootScope','dataService',function($scope,$http,$rootScope,dataService){
 		$scope.$on('analyticsData',function(event){
-
-			$http.get('../json/analytics.json').success(function(data){
-			$scope.analytics=data;
-			
-		});
+      console.log("recieved");
+      $scope.selection=dataService.getSelection();
+			  $scope.data=dataService.getCalculation();
+      
 		
 		});
     $scope.calculate=function(){

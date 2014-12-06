@@ -38,6 +38,7 @@ class QsizerController < ApplicationController
       @input << data
       end
     end
+    puts @input.size
   end
   
   def vCPU(server,saps,saps_per_core)

@@ -1,3 +1,1 @@
-json.qsizer 
-json.data @input
-
+json.qsizer @input

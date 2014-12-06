@@ -134,7 +134,7 @@
 		<div class="row">
 		  <div class="col-md-12 text-center">
 			<h2>Analytics</h2>
-				<table class="table table-condensed">
+				<table class="table table-condensed textalign">
   					<thead>
   						<tr>
   							<th class="hidden-xs">Landscape</th>
@@ -142,7 +142,7 @@
   							<th>SAP Product</th>
   							<th class="hidden-xs">Platform</th>
   							<th>Component</th>
-  							<th class="hidden-xs hidden-sm">Scale</th>
+  							
   							<th class="hidden-xs">vCPU</th>
   							<th class="hidden-xs">vRAM</th>
   							<th class="hidden-xs hidden-sm">Net IO</th>
@@ -153,21 +153,21 @@
   						</tr>
   					</thead>
   					<tbody>
-  						<tr ng-repeat="data in analytics">
-  							<td class="hidden-xs">{{data.landscape}}</td>
-  							<td class="hidden-xs">{{data.catalog}}</td>
-  							<td>{{data.product}}</td>
-  							<td class="hidden-xs">{{data.platform}}</td>
-  							<td><div ng-repeat="component in data.component">{{component.name}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="scale in data.scale">{{scale.scale}}</div></td>
-  					    <td class="hidden-xs"><div ng-repeat="cpu in data.vcpu">{{cpu.vcpu}}</div></td>
-                <td class="hidden-xs"><div ng-repeat="ram in data.vram">{{ram.vram}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="io in data.netio">{{io.netio}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="inputs in data.iops">{{inputs.iops}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="disk in data.vdisk">{{disk.vdisk}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="cat in data.scatalog">{{cat.catalog}}</div></td>
+  						<tr>
+  							<td class="hidden-xs">{{selection.landscape}}</td>
+  							<td class="hidden-xs">{{selection.catalog}}</td>
+  							<td>{{selection.product}}</td>
+  							<td class="hidden-xs">{{selection.platform}}</td>
+  							<td><div ng-repeat="d in data">{{d.server}}</div></td>
+                
+  					    <td class="hidden-xs"><div ng-repeat="d in data">{{d.vcpu}}</div></td>
+                <td class="hidden-xs"><div ng-repeat="d in data">{{d.vram}}</div></td>
+                <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.netio}}</div></td>
+                <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.iops}}</div></td>
+                <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.vdisk}}</div></td>
+                <td class="hidden-xs hidden-sm"><div ng-repeat="cat in data.scatalog">{{1+2}}</div></td>
                 <td class="hidden-xs hidden-sm">
-                      <div ng-repeat="cat in data.scatalog">
+                      <div ng-repeat="cat in data">
                             <select name="select">
                                     <option value="value1">Virtual</option> 
                                     <option value="value2" selected>Physical</option>

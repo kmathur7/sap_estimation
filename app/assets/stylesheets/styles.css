@@ -217,6 +217,9 @@ footer {
 .linkcolor:hover{
   color:white;
 }
+.textalign{
+  text-align: left;
+}
 /* -- media 768px --*/
 @media (min-width: 768px) {
   .containers_width{
