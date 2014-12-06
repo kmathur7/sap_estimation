@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202193011) do
+ActiveRecord::Schema.define(version: 20141206091427) do
+
+  create_table "assumptions_at_targets", force: true do |t|
+    t.string  "name"
+    t.integer "percentage"
+    t.decimal "decimal"
+  end
 
   create_table "bladeparameters", force: true do |t|
     t.integer "pcore"
@@ -63,6 +69,11 @@ ActiveRecord::Schema.define(version: 20141202193011) do
     t.integer "cpu"
     t.integer "ram"
     t.integer "nic"
+  end
+
+  create_table "vmware_ha_server_reqs", force: true do |t|
+    t.integer "protected"
+    t.integer "failover"
   end
 
 end

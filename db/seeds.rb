@@ -13,6 +13,8 @@ Infracatalog.delete_all
 Designrationale.delete_all
 Bladeparameter.delete_all
 Resourceweightage.delete_all
+AssumptionsAtTarget.delete_all
+VmwareHaServerReq.delete_all
 
 Landscape.create!([
   {id: 1, name: "Production"},
@@ -134,10 +136,19 @@ Designrationale.create!([
    ])
 
 Bladeparameter.create!([
-  {id: 1, pcore: 16,pram: 192, pnic: 10},
+  {id: 1, pcore: 16,pram: 192, pnic: 10}
   ])
 
 Resourceweightage.create!([
-  {id: 1, cpu: 100,ram: 0, nic: 0},
+  {id: 1, cpu: 100,ram: 0, nic: 0}
   ])
+
+AssumptionsAtTarget.create!([
+  {id: 1, name: 100,percentage: 100, decimal: 1}
+  ])
+
+VmwareHaServerReq.create!([
+  {id: 1, protected: 16,failover: 1}
+  ])
+
 
