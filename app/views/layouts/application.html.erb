@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="Saps">
 <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>SAPS Estimation</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>  
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
+  
+	<nav class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
 	  <div class="container">
 		<div class="navbar-header">
 		  <a href="#" class="navbar-brand">Home</a>
@@ -42,89 +46,89 @@
 
 	<div id="sec1" class="blurb">
 		<h2 class="text-center">Input</h2>
-	  <div class="container well well-lg">
-		
-		<div class="row" ng-controller="InputCtrl">
-			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <h4 class="panel-title text-center">Landscape<span class="resulttext"></span></h4>
-         </a>
-       
-      
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-    	<ul class="list-group">
-    		<li class="list-group-item listitem" ng-repeat="landscape in landscapes" ng-click="setLandscape(landscape)">{{landscape.name}}</li>
-    	</ul>
+		<div class="container well well-lg">
+			<div class="row" ng-controller="InputCtrl">
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							<h4 class="panel-title text-center">Landscape<span class="resulttext"></span></h4>
+							</a>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<ul class="list-group">
+								<li class="list-group-item listitem" ng-repeat="landscape in landscapes" ng-click="setLandscape(landscape)">{{landscape.name}}</li>
+							</ul>
      
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								<h4 class="panel-title text-center">Catalog</h4>
+							</a>
       
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <h4 class="panel-title text-center">Catalog</h4>
-        </a>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+							<ul class="list-group">
+								<li class="list-group-item listitem" ng-repeat="catalog in catalogs" ng-click="setCatalog(catalog)">{{catalog.name}}</li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								<h4 class="panel-title text-center">SAP Products</h4>
+							</a>
       
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <ul class="list-group">
-    		<li class="list-group-item listitem" ng-repeat="catalog in catalogs" ng-click="setCatalog(catalog)">{{catalog.name}}</li>
-    	</ul>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+							<ul class="list-group">
+								<li class="list-group-item listitem" ng-repeat="product in products" ng-click="setProduct(product)">{{product.name}}</li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFour">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+								<h4 class="panel-title text-center">Platform</h4>
+							</a>
       
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          <h4 class="panel-title text-center">SAP Products</h4>
-        </a>
-      
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <ul class="list-group">
-    		<li class="list-group-item listitem" ng-repeat="product in products" ng-click="setProduct(product)">{{product.name}}</li>
-    	</ul>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingFour">
-      
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          <h4 class="panel-title text-center">Platform</h4>
-        </a>
-      
-    </div>
-    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-      <ul class="list-group">
-    		<li class="list-group-item listitem" ng-repeat="platform in platforms" ng-click="setPlatform(platform)">{{platform.name}}</li>
-    	</ul>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingFive">
-      
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          <h4 class="panel-title text-center">Components</h4>
-        </a>
-      
-    </div>
-    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-      <ul class="list-group">
-    		<li class="list-group-item listitem" ng-repeat="component in components"><div><div>{{component.name}}</div><div><up-vote min="component.min" max="component.max" value="component.scale"></up-vote></div></div></li>
-    		
-    	</ul>
-    </div>
-  </div>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+							<ul class="list-group">
+								<li class="list-group-item listitem" ng-repeat="platform in platforms" ng-click="setPlatform(platform)">{{platform.name}}</li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFive">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+								<h4 class="panel-title text-center">Components</h4>
+							</a>
+						</div>
+						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+							<ul class="list-group">
+								<li class="list-group-item listitem" ng-repeat="component in components">
+									<div>
+										<div>{{component.name}}</div>
+										<div>
+											<up-vote min="component.min" max="component.max" value="component.scale"></up-vote>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
 
-</div>
-<a href="#sec2" class="linkcolor"><button class="btn btn-primary pull-right" ng-click="calculate()">Calculate</button></a>
-			
+				</div>
+				<div>
+					
+						<button class="btn btn-primary pull-right" ng-click="calculate()"><a href="#sec2" class="linkcolor">Calculate</a></button>
+					
+				</div>
+			</div>
 		</div>
-	  </div>
 	</div>
 	<hr>
 	
@@ -134,7 +138,7 @@
 		<div class="row">
 		  <div class="col-md-12 text-center">
 			<h2>Analytics</h2>
-				<table class="table table-condensed textalign">
+			<table class="table table-condensed textalign">
   					<thead>
   						<tr>
   							<th class="hidden-xs">Landscape</th>
@@ -148,8 +152,8 @@
   							<th class="hidden-xs hidden-sm">Net IO</th>
   							<th class="hidden-xs hidden-sm">IOPS</th>
   							<th class="hidden-xs hidden-sm">vDisk</th>
-                <th class="hidden-xs hidden-sm">Catalog</th>
-                <th class="hidden-xs hidden-sm">Customize</th>
+							<th class="hidden-xs hidden-sm">Catalog</th>
+							<th class="hidden-xs hidden-sm">Customize</th>
   						</tr>
   					</thead>
   					<tbody>
@@ -159,25 +163,24 @@
   							<td>{{selection.product}}</td>
   							<td class="hidden-xs">{{selection.platform}}</td>
   							<td><div ng-repeat="d in data">{{d.server}}</div></td>
-                
-  					    <td class="hidden-xs"><div ng-repeat="d in data">{{d.vcpu}}</div></td>
-                <td class="hidden-xs"><div ng-repeat="d in data">{{d.vram}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.netio}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.iops}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.vdisk}}</div></td>
-                <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.catalog}}</div></td>
-                <td class="hidden-xs hidden-sm">
-                      <div ng-repeat="cat in data">
-                            <select ng-model="cat.type" ng-options="item for item in options">
-                            </select>
-                      </div>
-                 </td>
-                
-                <td></td>
-  						</tr>
+							<td class="hidden-xs"><div ng-repeat="d in data">{{d.vcpu}}</div></td>
+							<td class="hidden-xs"><div ng-repeat="d in data">{{d.vram}}</div></td>
+							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.netio}}</div></td>
+							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.iops}}</div></td>
+							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.vdisk}}</div></td>
+							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.catalog}}</div></td>
+							<td class="hidden-xs hidden-sm">
+								<div ng-repeat="cat in data">
+									<select ng-model="cat.type" ng-options="item for item in options">
+									</select>
+								</div>
+							</td>
+						</tr>
   					</tbody>
 				</table>
-        <a href="#sec3" class="linkcolor"><button class="btn btn-primary pull-right" ng-click="calculate()">Results</button></a>
+			<div>
+				<a href="#sec3" class="linkcolor"><button class="btn btn-primary pull-right" ng-click="calculate()">Results</button></a>
+			</div>
 		  </div>
 		</div>
 	  </div>
@@ -186,19 +189,14 @@
 	<hr>
 
 	<div class="blurb bright" ng-controller="ResultsCtrl">
-	  
+	  <div class="container">
 	  <div class="row">
 		  <div class="col-md-6 col-md-offset-3 text-center">
 			<h3 id="sec3">Results</h3>
-			<br>
 			<table class="table table-condensed">
 				<tr>
-					<td>
-						Total No of Physical Servers for Virtualization
-					</td>
-					<td>
-						{{results.physical_servers}}
-					</td>
+					<td>Total No of Physical Servers for Virtualization</td>
+					<td>{{results.physical_servers}}</td>
 				</tr>
 				<tr>
 					<td>
@@ -227,13 +225,8 @@
 	  
 	  
 	  </div>
-	</div>
-	<ul class="nav pull-right scroll-down">
-	  <li><a href="#" title="Scroll down"><i class="icon-chevron-down icon-3x"></i></a></li>
-	</ul>
-	<ul class="nav pull-right scroll-top">
-	  <li><a href="#" title="Scroll to top"><i class="icon-chevron-up icon-3x"></i></a></li>
-	</ul>
+  </div>
+	
  
 </body>
 </html>

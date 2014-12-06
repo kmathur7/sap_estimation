@@ -220,33 +220,7 @@ footer {
 .textalign{
   text-align: left;
 }
-/* -- media 768px --*/
-@media (min-width: 768px) {
-  .containers_width{
-    width: 750px;
-  }
-  .increment{
-    padding-left: 44px;
-  }
-}
-/* -- media 992px --*/
-@media (min-width: 992px) {
-  .containers_width{
-    width: 970px;
-  }
-  .increment{
-    padding-left: 640px;
-  }
-}
-/* -- media 1200px --*/
-@media (min-width: 1200px) {
-  .containers_width{
-    width: 65%;
-  }
-  .increment{
-    padding-left: 640px;
-  }
-}
+
 
 
 
