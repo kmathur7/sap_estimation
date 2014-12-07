@@ -4,7 +4,7 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>SAPS Estimation</title>
+  <title>SAP Integrated Programmable Model</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>  
   <%= csrf_meta_tags %>
@@ -14,7 +14,7 @@
 	<nav class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
 	  <div class="container">
 		<div class="navbar-header">
-		  <a href="#" class="navbar-brand">Home</a>
+		  <a href="" class="navbar-brand scroll-top">Home</a>
 		  <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -35,8 +35,8 @@
 	<div class="header alt vert">
 	  <div class="container">
 		
-		<h1 class="heading">SAPS 2 VM</h1>
-		  <p class="lead">Infranstructure Optimization Tool</p>
+		<h1 class="heading">SAP</h1>
+		  <p class="lead">Integrated Programmable Model</p>
 		  <div>&nbsp;</div>
 		  <a href="#sec1" class="btn btn-default btn-lg">Get Started</a>
 	  </div>
@@ -152,8 +152,8 @@
   							<th class="hidden-xs hidden-sm">Net IO</th>
   							<th class="hidden-xs hidden-sm">IOPS</th>
   							<th class="hidden-xs hidden-sm">vDisk</th>
-							<th class="hidden-xs hidden-sm">Catalog</th>
-							<th class="hidden-xs hidden-sm">Customize</th>
+							<th>Catalog</th>
+							<th>Customize</th>
   						</tr>
   					</thead>
   					<tbody>
@@ -168,8 +168,8 @@
 							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.netio}}</div></td>
 							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.iops}}</div></td>
 							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.vdisk}}</div></td>
-							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.catalog}}</div></td>
-							<td class="hidden-xs hidden-sm">
+							<td ><div ng-repeat="d in data">{{d.catalog}}</div></td>
+							<td>
 								<div ng-repeat="cat in data">
 									<select ng-model="cat.type" ng-options="item for item in options">
 									</select>
