@@ -16,6 +16,19 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 			}
 		};
 	})
+.factory('resultService',function(){
+		var result;
+    
+		return {
+			setResult : function(data){
+				result=data;
+        
+			},
+			getResult : function(){
+				return result;
+			}
+		};
+	})
 
   .controller('InputCtrl',['$scope','$http','$rootScope','dataService',function($scope,$http,$rootScope,dataService){
 		$http.get('./landscape').success(function(data){
@@ -69,7 +82,7 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
       
       $http.post('./qsizer',selection)
 	       .success(function(data){
-                               console.log(data);
+                               console.log(data.qsizer);
 		                           dataService.setData(selection,data.qsizer);
                                $rootScope.$broadcast('analyticsData');
 
@@ -81,30 +94,44 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 
 	}])
 
-  .controller('AnalyticsCtrl',['$scope','$http','$rootScope','dataService',function($scope,$http,$rootScope,dataService){
+  .controller('AnalyticsCtrl',['$scope','$http','$rootScope','dataService','resultService',function($scope,$http,$rootScope,dataService,resultService){
 		$scope.$on('analyticsData',function(event){
           console.log("recieved");
           $scope.selection=dataService.getSelection();
 			    $scope.data=dataService.getCalculation();
     });
     $scope.options = ['Physical','Virtual'];
-    $scope.calculate=function(){
-			  $rootScope.$broadcast('resultData');
-        console.log($scope.data);
+    
+    $scope.result=function(){
+			  //console.log($scope.data);
+        var temp = $scope.data;
+       /*  var names = [];
+        temp.forEach(function(entry){
+          names.push(entry.catalog);
+        });
+      console.log(names);
+      */
+      
+      
+        console.log(temp);
+        $http.post('./analyze/data',temp)
+	       .success(function(data){
+                               console.log("Sent data");
+                               resultService.setResult(data);
+		                           $rootScope.$broadcast('resultData');
+
+                                
+		                        });
+      console.log("Sent");
+      
 		};
 	}])
 
-  .controller('ResultsCtrl',function($scope,$http){
+  .controller('ResultsCtrl',function($scope,$http,resultService){
 		$scope.$on('resultData',function(event){
-
-			$http.get('../json/results.json').success(function(data){
-			$scope.results=data;
-        
-			
-		});
-		
-		});
-		
+      console.log("Result Received");
+      $scope.results=resultService.getResult();
+    });
 	})
 
   .directive('upVote', function(){
@@ -131,3 +158,4 @@ var selection={
       
                 }
 		};
+

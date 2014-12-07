@@ -1,0 +1,5 @@
+json.qsizer
+json.total_physical_server_for_virtualization @total_physical_server_for_virtualization
+json.include_failover_capacity @include_failover_capacity
+json.no_physical_servers_opted @no_physical_servers_opted
+json.total_physical_servers @total_physical_servers

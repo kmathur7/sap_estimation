@@ -179,7 +179,7 @@
   					</tbody>
 				</table>
 			<div>
-				<a href="#sec3" class="linkcolor"><button class="btn btn-primary pull-right" ng-click="calculate()">Results</button></a>
+				<button class="btn btn-primary pull-right" ng-click="result()"><a href="#sec3" class="linkcolor">Results</a></button>
 			</div>
 		  </div>
 		</div>
@@ -196,27 +196,27 @@
 			<table class="table table-condensed">
 				<tr>
 					<td>Total No of Physical Servers for Virtualization</td>
-					<td>{{results.physical_servers}}</td>
+					<td>{{results.total_physical_server_for_virtualization}}</td>
 				</tr>
 				<tr>
 					<td>
 						Include Failover Capacity
 					</td>
-					<td>{{results.failover_capacity}}
+					<td>{{results.include_failover_capacity}}
 					</td>
 				</tr>
 				<tr>
 					<td>
 						No of Physical Servers Opted
 					</td>
-					<td>{{results.no_physical_servers}}
+					<td>{{results.no_physical_servers_opted}}
 					</td>
 				</tr>
 				<tr>
 					<td>
 						Total Physical Servers
 					</td>
-					<td>{{results.total_servers}}
+					<td>{{results.total_physical_servers}}
 					</td>
 				</tr>
 			</table>

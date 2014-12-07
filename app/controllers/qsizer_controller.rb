@@ -28,6 +28,7 @@ class QsizerController < ApplicationController
       $i = 0
       while $i < component[:scale] do
       data = Hash.new
+        data['landscape'] = params[:landscape]
       data['server'] = component[:name]
       vcpu = vCPU(server,saps,saps_per_core)
       data['vcpu'] = vcpu
@@ -41,7 +42,7 @@ class QsizerController < ApplicationController
       @input << data
       end
     end
-    puts @input.size
+  
   end
   
   def vCPU(server,saps,saps_per_core)
@@ -163,6 +164,111 @@ class QsizerController < ApplicationController
   def findCatalog(vcpu,vram)
     catalog = Infracatalog.where("vcpu=? AND vram=?",vcpu,vram).pluck(:subcatalog).join(" ")
     return catalog
+  end
+  
+  def output
+    a = request.POST
+    catalog = Array.new
+    scale = Array.new
+    type = Array.new #stores whether virtual or Physical
+    b = Array.new
+    b=a[:_json]
+    b.each do |dataset|
+      catalog << dataset[:catalog]
+      scale << 1
+      @landscape = dataset[:landscape]
+      type << dataset[:type]
+    end
+    subcatalog = Infracatalog.pluck(:subcatalog)
+    cpu = Infracatalog.pluck(:vcpu)
+    ram = Infracatalog.pluck(:vram)
+    nic = Infracatalog.pluck(:vnic)
+    catalog_size = subcatalog.size()
+    catalogsize = catalog.size()
+    pcore = fetchpcore(@landscape)
+    pram = fetchpram(@landscape)
+    pnic = fetchpnic(@landscape)
+    pcore_blade = Bladeparameter.pluck(:pcore).join(" ").to_f
+    pram_blade = Bladeparameter.pluck(:pram).join(" ").to_f
+    pnic_blade = Bladeparameter.pluck(:pnic).join(" ").to_f
+    cpu_resourceweightages = Resourceweightage.pluck(:cpu).join(" ").to_f
+    ram_resourceweightages = Resourceweightage.pluck(:ram).join(" ").to_f
+    nic_resourceweightages = Resourceweightage.pluck(:nic).join(" ").to_f
+    vh_cpu_utilization = AssumptionsAtTarget.pluck(:decimal).join(" ").to_f
+    vm_protected = VmwareHaServerReq.pluck(:protected).join(" ").to_f
+    vm_failover = VmwareHaServerReq.pluck(:failover).join(" ").to_f
+    
+    physical=Array.new(catalog_size,0)#physical
+    virtual=Array.new(catalog_size,0)#virtual
+    totalvcpu=Array.new(catalog_size,0)#
+    totalvram=Array.new(catalog_size,0)
+    totalvnic=Array.new(catalog_size,0)
+    totalpcores=Array.new(catalog_size,0)
+    totalpram=Array.new(catalog_size,0)
+    totalpnic=Array.new(catalog_size,0)
+    servercpu=Array.new(catalog_size,0)
+    serverram=Array.new(catalog_size,0)
+    servernic=Array.new(catalog_size,0)
+    
+    j=0 # count of the types of the catalogs got
+      while j < catalogsize
+        i=0  # total count of the types of the catalogs 
+          while i < catalog_size
+              if(subcatalog[i]===catalog[j])
+                if(type[j]==="Physical")
+                    physical[i]=scale[j]
+                     virtual[i]=0
+                  else
+                    virtual[i]=scale[j]
+                    physical[i]=0
+                    totalvcpu[i]=virtual[i]*cpu[i]
+                    totalvram[i]=virtual[i]*ram[i]
+                    totalvnic[i]=virtual[i]*nic[i]
+                  #Design rationale calculation
+                    totalpcores[i]=totalvcpu[i]/ pcore
+                    totalpram[i]=totalvram[i]/ pram
+                    totalpnic[i]=(totalvnic[i]/ pnic).ceil
+                   
+                    servercpu[i]=(totalpcores[i]/ pcore_blade).ceil
+                    serverram[i]=(totalpram[i]/ pram_blade).ceil
+                    servernic[i]=(totalpnic[i]/ pnic_blade).ceil
+                  end
+              end
+              i+=1
+          end
+          j+=1
+    end
+    totalservercpu=servercpu.sum #L26
+    totalserverram=serverram.sum #M26
+    totalservernic=servernic.sum #N26
+    
+    
+    @total_physical_server_for_virtualization=((((totalservercpu* cpu_resourceweightages)+(totalserverram* ram_resourceweightages)+(totalservernic* nic_resourceweightages))/ ( cpu_resourceweightages+ ram_resourceweightages+ nic_resourceweightages))*vh_cpu_utilization).ceil
+    
+    @include_failover_capacity = (((@total_physical_server_for_virtualization/ vm_protected)*vm_failover)+@total_physical_server_for_virtualization).ceil
+    @no_physical_servers_opted = physical.sum
+    @total_physical_servers = @include_failover_capacity + @no_physical_servers_opted
+    
+  end
+  
+  #Function to fetch pCore value from Design Rationale based on landscape
+  #1 pCore = _____ vCPU in Qty
+  def fetchpcore(landscape)
+    pcore = Designrationale.where("landscape=?",landscape).pluck(:pcore).join(" ").to_f
+    return pcore
+  end
+  
+  #Function to fetch pRAM value from Design Rationale based on landscape
+  #1GB pRAM = ____ vRAM in GB
+  def fetchpram(landscape)
+    pram = Designrationale.where("landscape=?",landscape).pluck(:pram).join(" ").to_f
+    return pram
+  end
+  #Function to fetch pNIC value from Design Rationale based on landscape
+  #1pNIC = ____ vNIC in Qty
+  def fetchpnic(landscape)
+    pnic = Designrationale.where("landscape=?",landscape).pluck(:pnic).join(" ").to_f
+    return pnic
   end
   
   
