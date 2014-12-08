@@ -18,7 +18,7 @@ class QsizerController < ApplicationController
     memory = QuickSizer.where("catalog=? AND product=? AND platform=?",params[:catalog],params[:product],params[:platform]).pluck(:memory).join(" ").to_i
     iops =  QuickSizer.where("catalog=? AND product=? AND platform=?",params[:catalog],params[:product],params[:platform]).pluck(:iops).join(" ").to_i
     disksize = QuickSizer.where("catalog=? AND product=? AND platform=?",params[:catalog],params[:product],params[:platform]).pluck(:disksize).join(" ").to_i
-    saps_per_core=2000
+    saps_per_core=2300
     @input = Array.new
     
     
@@ -62,7 +62,7 @@ class QsizerController < ApplicationController
         if(server==="Application")
             ram=(((0.65*memory)/ 2).ceil)
         elsif(server==="SCS")
-            ram=((0.65*memory)/ 4).ceil
+          ram=((0.65*memory)/ 4).round
         elsif(server==="Database")
             ram=((0.35*memory)/ 2).ceil
         else
@@ -75,7 +75,7 @@ class QsizerController < ApplicationController
         if(server==="Application")
             netio=(((0.65*io)/ 2).ceil)
         elsif(server==="SCS")
-            netio=((0.65*io)/ 4).ceil
+          netio=((0.65*io)/ 4).round
         elsif(server==="Database")
             netio=((0.35*io)/ 2).ceil
         else
@@ -88,7 +88,7 @@ class QsizerController < ApplicationController
         if(server==="Application")
             io=(((0.0*iops)/ 2).ceil)
         elsif(server==="SCS")
-            io=((0.0*iops)/ 4).ceil
+          io=((0.0*iops)/ 4).round
         elsif(server==="Database")
             io=(1.0*iops).ceil
         else
@@ -101,7 +101,7 @@ class QsizerController < ApplicationController
         if(server==="Application")
           vdisk=((((0.0*disksize)/ 2)+200).ceil)
         elsif(server==="SCS")
-            vdisk=(((0.0*disksize)/ 4)+200).ceil
+          vdisk=(((0.0*disksize)/ 4)+200).round
         elsif(server==="Database")
             vdisk=((1.0*disksize)+200).ceil
         else

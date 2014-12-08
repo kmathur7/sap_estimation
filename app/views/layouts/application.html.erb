@@ -52,7 +52,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="headingOne">
 							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							<h4 class="panel-title text-center">Landscape<span class="resulttext"></span></h4>
+							<h4 class="panel-title text-center">Landscape<span class="resulttext">{{landscape}}</span></h4>
 							</a>
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
@@ -171,6 +171,7 @@
 							<td ><div ng-repeat="d in data">{{d.catalog}}</div></td>
 							<td>
 								<div ng-repeat="cat in data">
+                  <span ng-init="cat.type='Physical'"></span >
 									<select ng-model="cat.type" ng-options="item for item in options">
 									</select>
 								</div>
