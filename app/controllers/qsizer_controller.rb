@@ -4,7 +4,7 @@ class QsizerController < ApplicationController
   end
   
   def platforms
-    @platform = QuickSizer.where("catalog=? AND product=?",params[:catalog],params[:product]).pluck(:platform)
+    @platform = QuickSizer.where("product=?",params[:product]).pluck(:platform)
   end
   
   def components
@@ -13,11 +13,11 @@ class QsizerController < ApplicationController
   
   def create
      
-    saps = QuickSizer.where("catalog=? AND product=? AND platform=?",params[:catalog],params[:product],params[:platform]).pluck(:saps).join(" ").to_i
-    io = QuickSizer.where("catalog=? AND product=? AND platform=?",params[:catalog],params[:product],params[:platform]).pluck(:io).join(" ").to_i
-    memory = QuickSizer.where("catalog=? AND product=? AND platform=?",params[:catalog],params[:product],params[:platform]).pluck(:memory).join(" ").to_i
-    iops =  QuickSizer.where("catalog=? AND product=? AND platform=?",params[:catalog],params[:product],params[:platform]).pluck(:iops).join(" ").to_i
-    disksize = QuickSizer.where("catalog=? AND product=? AND platform=?",params[:catalog],params[:product],params[:platform]).pluck(:disksize).join(" ").to_i
+    saps = QuickSizer.where("product=? AND platform=?",params[:product],params[:platform]).pluck(:saps).join(" ").to_i
+    io = QuickSizer.where("product=? AND platform=?",params[:product],params[:platform]).pluck(:io).join(" ").to_i
+    memory = QuickSizer.where("product=? AND platform=?",params[:product],params[:platform]).pluck(:memory).join(" ").to_i
+    iops =  QuickSizer.where("product=? AND platform=?",params[:product],params[:platform]).pluck(:iops).join(" ").to_i
+    disksize = QuickSizer.where("product=? AND platform=?",params[:product],params[:platform]).pluck(:disksize).join(" ").to_i
     saps_per_core=2300
     @input = Array.new
     

@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20141206091427) do
   end
 
   create_table "quick_sizers", force: true do |t|
-    t.string  "catalog"
     t.string  "product"
     t.string  "platform"
     t.integer "saps"
