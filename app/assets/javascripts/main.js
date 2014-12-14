@@ -34,16 +34,13 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		$http.get('./landscape').success(function(data){
 			$scope.landscapes=data.landscape;
 		});
-		$http.get('./catalog').success(function(data){
-			$scope.catalogs=data.catalog;
-		});
-		
+	
 		
 		
 
 		$scope.setLandscape=function(landscape){
 			selection.landscape=landscape.name;
-      $http.get('../qsizer/'+"catalog.name").success(function(data){
+      $http.get('../qsizer/'+1).success(function(data){
 			$scope.products=data.qsizer;
 		});
 			$('#collapseOne').collapse('hide');
