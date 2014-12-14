@@ -62,52 +62,40 @@
      
 						</div>
 					</div>
+					
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="headingTwo">
 							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								<h4 class="panel-title text-center">Catalog</h4>
-							</a>
-      
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-							<ul class="list-group">
-								<li class="list-group-item listitem" ng-repeat="catalog in catalogs" ng-click="setCatalog(catalog)">{{catalog.name}}</li>
-							</ul>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingThree">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 								<h4 class="panel-title text-center">SAP Products</h4>
 							</a>
       
 						</div>
-						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 							<ul class="list-group">
 								<li class="list-group-item listitem" ng-repeat="product in products" ng-click="setProduct(product)">{{product.name}}</li>
 							</ul>
 						</div>
 					</div>
 					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingFour">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+						<div class="panel-heading" role="tab" id="headingThree">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 								<h4 class="panel-title text-center">Platform</h4>
 							</a>
       
 						</div>
-						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 							<ul class="list-group">
 								<li class="list-group-item listitem" ng-repeat="platform in platforms" ng-click="setPlatform(platform)">{{platform.name}}</li>
 							</ul>
 						</div>
 					</div>
 					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingFive">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+						<div class="panel-heading" role="tab" id="headingFour">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 								<h4 class="panel-title text-center">Components</h4>
 							</a>
 						</div>
-						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
 							<ul class="list-group">
 								<li class="list-group-item listitem" ng-repeat="component in components">
 									<div>
@@ -120,10 +108,15 @@
 							</ul>
 						</div>
 					</div>
+					
+
+
 
 				</div>
 				<div>
-					
+            <span ng-init="catalog='Custom'"></span >
+						<select ng-model="catalog" ng-options="item for item in cats">
+						</select>
 						<button class="btn btn-primary pull-right" ng-click="calculate()"><a href="#sec2" class="linkcolor">Calculate</a></button>
 					
 				</div>
@@ -171,7 +164,7 @@
 							<td ><div ng-repeat="d in data">{{d.catalog}}</div></td>
 							<td>
 								<div ng-repeat="cat in data">
-                  <span ng-init="cat.type='Physical'"></span >
+                  <span ng-init="cat.type='Virtual'"></span >
 									<select ng-model="cat.type" ng-options="item for item in options">
 									</select>
 								</div>

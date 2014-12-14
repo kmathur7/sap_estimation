@@ -2,7 +2,7 @@ class CreateQuickSizers < ActiveRecord::Migration
   def change
     create_table :quick_sizers do |t|
 
-      t.string :catalog
+      
       t.string :product
       t.string :platform
       t.integer :saps

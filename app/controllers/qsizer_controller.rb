@@ -1,6 +1,6 @@
 class QsizerController < ApplicationController
   def show
-    @product = QuickSizer.where("catalog=?",params[:id]).pluck(:product) 
+    @product = QuickSizer.all.pluck(:product) 
   end
   
   def platforms
