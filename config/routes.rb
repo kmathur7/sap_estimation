@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   post 'admin/assumptionstarget/' => 'admin#setassumptionstarget'
   get 'admin/design/:landscape' => 'admin#getdesignrationale'
   post 'admin/design/' => 'admin#setdesignrationale'
+  get 'admin/apptodb/:id' =>'admin#getapptodb'
+  post 'admin/apptodb/' =>'admin#setapptodb'
+  get 'admin/vmware/:id' => 'admin#getvmhaserverreqq'
+  post 'admin/vmware/' => 'admin#setvmhaserverreqq'
   
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

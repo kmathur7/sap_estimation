@@ -230,7 +230,7 @@
       </div>
       <div class="modal-body">
         	<div class="row">
-        		<div class="col-lg-6 col-md-12" ng-controller="DesignCtrl">
+        		<div class="col-lg-6 col-md-6" ng-controller="DesignCtrl">
               <div>
                   <h4>Design Rationale <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -272,7 +272,7 @@
         				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
         			</form>
         		</div>
-        		<div class="col-lg-6 col-md-12" ng-controller="BladeCtrl">
+        		<div class="col-lg-6 col-md-6" ng-controller="BladeCtrl">
               <div><h4>Parameters per Blade</h4></div>
         			<form class="form-horizontal" role="form">
         				<div class="form-group">
@@ -302,34 +302,34 @@
         	</div>
         <hr>
         	<div class="row">
-        		<div class="col-lg-6 col-md-12" ng-controller="ResourceCtrl">
+        		<div class="col-lg-6 col-md-6" ng-controller="ResourceCtrl">
               <div><h4>Resource Weightage %</h4></div>
         			<form class="form-horizontal" role="form">
         				<div class="form-group">
         					<label for="rcpu" class="col-lg-5">CPU</label>
                   			<div class="col-lg-4">
-        						<input type="number" ng-model="resource.cpu" class="form-control" id="rcpu">
+        						<input type="number" ng-model="resource.cpu" min="0.0" max="100.0" class="form-control" id="rcpu">
                   			</div>
                   			
         				</div>
         				<div class="form-group">
         					<label for="rmemory" class="col-lg-5">Memory</label>
         					<div class="col-lg-4">
-        						<input type="number" ng-model="resource.ram" class="form-control" id="rmemory">
+        						<input type="number" ng-model="resource.ram" min="0.0" max="100.0" class="form-control" id="rmemory">
         					</div>
         					
         				</div>
         				<div class="form-group">
         					<label for="rnic" class="col-lg-5">NIC</label>
         					<div class="col-lg-4">
-        						<input type="number" ng-model="resource.nic" class="form-control" id="rnic">
+        						<input type="number" ng-model="resource.nic" min="0.0" max="100.0" class="form-control" id="rnic">
         					</div>
         					
         				</div>
         				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
         			</form>
         		</div>
-        		<div class="col-lg-6 col-md-12" ng-controller="AssumptionsTargetCtrl">
+        		<div class="col-lg-6 col-md-6" ng-controller="AssumptionsTargetCtrl">
               <div><h4>Assumptions at Target</h4></div>
         			<form class="form-horizontal" role="form">
         				<div class="form-group">
@@ -343,6 +343,49 @@
         					<label for="decimalval" class="col-lg-5">Decimal</label>
         					<div class="col-lg-4">
         						<input type="number" ng-model="decimal" class="form-control" id="decimalval" disabled>
+        					</div>
+        					
+        				</div>
+        				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+        			</form>
+        		</div>
+        	</div>
+        	<hr>
+        	<div class="row">
+        		<div class="col-lg-6 col-md-6" ng-controller="ApptodbCtrl">
+              <div><h4>Application to Database Ratio</h4></div>
+        			<form class="form-horizontal" role="form">
+        				<div class="form-group">
+        					<label for="app" class="col-lg-5">Application</label>
+                  			<div class="col-lg-4">
+        						<input type="number" ng-model="ratio.application" class="form-control" id="app">
+                  			</div>
+                  			
+        				</div>
+        				<div class="form-group">
+        					<label for="db" class="col-lg-5">Database</label>
+        					<div class="col-lg-4">
+        						<input type="number" ng-model="ratio.database" class="form-control" id="db">
+        					</div>
+        					
+        				</div>
+        				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+        			</form>
+        		</div>
+        		<div class="col-lg-6 col-md-6" ng-controller="ReqCtrl">
+              <div><h4>VMware HA Server Requirement</h4></div>
+        			<form class="form-horizontal" role="form">
+        				<div class="form-group">
+        					<label for="protect" class="col-lg-5">Protected</label>
+                  			<div class="col-lg-4">
+        						<input type="number" ng-model="require.protected" class="form-control" id="protect">
+                  			</div>
+                  			
+        				</div>
+        				<div class="form-group">
+        					<label for="failover" class="col-lg-5">Failover Oty</label>
+        					<div class="col-lg-4">
+        						<input type="number" ng-model="require.failover" class="form-control" id="failover">
         					</div>
         					
         				</div>

@@ -202,6 +202,45 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
     };
 	})
 
+  .controller('ApptodbCtrl',function($scope,$http){
+		  
+      $http.get('../admin/apptodb/1').success(function(data){
+			$scope.application=data.application;
+		});
+     // $scope.decimal = 1+((100 - $scope.percentage)/100);
+     $scope.$watch('application', function() {
+       $scope.database = 1.0-$scope.application;
+   });
+    
+    $scope.save = function(){
+      var ratio = {
+        id:1,
+        application:$scope.application,
+        database:$scope.database
+      };
+      $http.post('../admin/apptodb/',ratio)
+	       .success(function(data){
+                               $scope.application=data.application;
+                            });
+    };
+	})
+
+  .controller('ReqCtrl',function($scope,$http){
+		  
+      $http.get('../admin/vmware/1').success(function(data){
+			$scope.require=data.req;
+		});
+     
+    
+    $scope.save = function(){
+      
+      $http.post('../admin/vmware/',$scope.require)
+	       .success(function(data){
+                               $scope.require=data.req;
+                            });
+    };
+	})
+
   .directive('upVote', function(){
   return    {
     restrict:'E',
