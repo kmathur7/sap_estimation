@@ -14,6 +14,7 @@ Bladeparameter.delete_all
 Resourceweightage.delete_all
 AssumptionsAtTarget.delete_all
 VmwareHaServerReq.delete_all
+ApplicationToDatabaseRatio.delete_all
 
 Landscape.create!([
   {id: 1, name: "Production"},
@@ -133,6 +134,9 @@ AssumptionsAtTarget.create!([
 
 VmwareHaServerReq.create!([
   {id: 1, protected: 16,failover: 1}
+  ])
+ApplicationToDatabaseRatio.create!([
+  {id: 1, application: 0.65,database: 0.35}
   ])
 
 

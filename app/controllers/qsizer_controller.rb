@@ -18,6 +18,9 @@ class QsizerController < ApplicationController
     memory = QuickSizer.where("product=? AND platform=?",params[:product],params[:platform]).pluck(:memory).join(" ").to_i
     iops =  QuickSizer.where("product=? AND platform=?",params[:product],params[:platform]).pluck(:iops).join(" ").to_i
     disksize = QuickSizer.where("product=? AND platform=?",params[:product],params[:platform]).pluck(:disksize).join(" ").to_i
+    application = ApplicationToDatabaseRatio.where("id=?",1).pluck(:application).join(" ").to_f
+    database = ApplicationToDatabaseRatio.where("id=?",1).pluck(:database).join(" ").to_f
+    puts application
     saps_per_core=2300
     @input = Array.new
     
@@ -30,11 +33,11 @@ class QsizerController < ApplicationController
       data = Hash.new
         data['landscape'] = params[:landscape]
       data['server'] = component[:name]
-      vcpu = vCPU(server,saps,saps_per_core)
+        vcpu = vCPU(server,saps,saps_per_core,application,database)
       data['vcpu'] = vcpu
-      vram = vRAM(server,memory)
+      vram = vRAM(server,memory,application,database)
       data['vram'] = vram
-      data['netio'] = netIO(server,io)
+      data['netio'] = netIO(server,io,application,database)
       data['iops'] = iops(server,iops)
       data['vdisk'] =vDisk(server,disksize)
       data['catalog'] = findCatalog(cpu(vcpu),ram(vram))
@@ -45,39 +48,39 @@ class QsizerController < ApplicationController
   
   end
   
-  def vCPU(server,saps,saps_per_core)
+  def vCPU(server,saps,saps_per_core,application,database)
         if(server==="Application")
-            cpu=(((0.65*saps)/ 2)/ saps_per_core).ceil
+            cpu=(((application*saps)/ 2)/ saps_per_core).ceil
         elsif(server==="SCS")
-            cpu=(((0.65*saps)/ 4)/ saps_per_core).ceil
+            cpu=(((application*saps)/ 4)/ saps_per_core).ceil
         elsif(server==="Database")
-            cpu=(((0.35*saps)/ 2)/ saps_per_core).ceil
+            cpu=(((database*saps)/ 2)/ saps_per_core).ceil
         else
             cpu=(((1.0*saps)/ 2)/ saps_per_core).ceil
         end
         return cpu
   end
   
-  def vRAM(server,memory)
+  def vRAM(server,memory,application,database)
         if(server==="Application")
-            ram=(((0.65*memory)/ 2).ceil)
+            ram=(((application*memory)/ 2).ceil)
         elsif(server==="SCS")
-          ram=((0.65*memory)/ 4).round
+          ram=((application*memory)/ 4).round
         elsif(server==="Database")
-            ram=((0.35*memory)/ 2).ceil
+          ram=((database*memory)/ 2).ceil
         else
             ram=((1.0*memory)/ 2).ceil
         end
         return ram
   end
   
-  def netIO(server,io)
+  def netIO(server,io,application,database)
         if(server==="Application")
-            netio=(((0.65*io)/ 2).ceil)
+            netio=(((application*io)/ 2).ceil)
         elsif(server==="SCS")
-          netio=((0.65*io)/ 4).round
+          netio=((application*io)/ 4).round
         elsif(server==="Database")
-            netio=((0.35*io)/ 2).ceil
+          netio=((database*io)/ 2).ceil
         else
             netio=((1.0*io)/ 2).ceil
         end

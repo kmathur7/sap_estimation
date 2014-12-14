@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206091427) do
+ActiveRecord::Schema.define(version: 20141214180359) do
+
+  create_table "application_to_database_ratios", force: true do |t|
+    t.decimal "application"
+    t.decimal "database"
+  end
 
   create_table "assumptions_at_targets", force: true do |t|
     t.string  "name"
