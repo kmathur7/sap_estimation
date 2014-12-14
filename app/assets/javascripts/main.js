@@ -136,24 +136,47 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
 		$http.get('../admin/design/Production').success(function(data){
 			$scope.design=data.design;
 		});
+    
     $scope.fetch = function(landscape){
       $scope.selection = landscape;
       $http.get('../admin/design/'+ landscape).success(function(data){
 			$scope.design=data.design;
 		});
     };
+    
+    $scope.save = function(){
+      $http.post('../admin/design',$scope.design)
+	       .success(function(data){
+                               $scope.design=data.design;
+                            });
+    };
+    
 	})
 
   .controller('ResourceCtrl',function($scope,$http){
 		$http.get('../admin/resourceweightage/1').success(function(data){
 			$scope.resource=data.resource;
 		});
+    
+    $scope.save = function(){
+      $http.post('./admin/resourceweightage',$scope.resource)
+	       .success(function(data){
+                               $scope.resource=data.resource;
+                            });
+    };
 	})
 
   .controller('BladeCtrl',function($scope,$http){
 		$http.get('../admin/bladeparameters/1').success(function(data){
 			$scope.parameters=data.parameters;
 		});
+    
+    $scope.save = function(){
+      $http.post('./admin/bladeparameters',$scope.parameters)
+	       .success(function(data){
+                               $scope.parameters=data.parameters;
+                            });
+    };
 	})
 
   .controller('AssumptionsTargetCtrl',function($scope,$http){
@@ -165,6 +188,18 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
      $scope.$watch('percentage', function() {
        $scope.decimal = 1+((100 - $scope.percentage)/100);
    });
+    
+    $scope.save = function(){
+      var senddata = {
+        id: 1,
+        percentage: $scope.percentage,
+        decimal: $scope.decimal
+      };
+      $http.post('../admin/assumptionstarget',senddata)
+	       .success(function(data){
+                               $scope.percentage=data.assumptions.percentage;
+                            });
+    };
 	})
 
   .directive('upVote', function(){

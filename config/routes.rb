@@ -16,9 +16,13 @@ Rails.application.routes.draw do
   get 'qsizer/:product/:platform/:id' => 'qsizer#components'
   post 'analyze/data' => 'qsizer#output'
   get 'admin/resourceweightage/:id' => 'admin#getresource'
+  post 'admin/resourceweightage/' => 'admin#setresource'
   get 'admin/bladeparameters/:id' => 'admin#getparametersperblade'
+  post 'admin/bladeparameters/' => 'admin#setparametersperblade'
   get 'admin/assumptionstarget/:id' => 'admin#getassumptionstarget'
+  post 'admin/assumptionstarget/' => 'admin#setassumptionstarget'
   get 'admin/design/:landscape' => 'admin#getdesignrationale'
+  post 'admin/design/' => 'admin#setdesignrationale'
   
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
