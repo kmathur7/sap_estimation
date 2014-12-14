@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Landscape.delete_all
-Catalog.delete_all
 QuickSizer.delete_all
 Component.delete_all
 Infracatalog.delete_all
@@ -22,12 +21,6 @@ Landscape.create!([
   {id: 3, name: "Development"},
   {id: 4, name: "Staging"},
   {id: 5, name: "Testing"}
-  
-  ])
-Catalog.create!([
-  {id: 1, name: "Bundle A"},
-  {id: 2, name: "Bundle B"},
-  {id: 3, name: "Bundle C"}
   
   ])
 
@@ -135,7 +128,7 @@ Resourceweightage.create!([
   ])
 
 AssumptionsAtTarget.create!([
-  {id: 1, name: 100,percentage: 100, decimal: 1}
+  {id: 1, percentage: 100, decimal: 1.0}
   ])
 
 VmwareHaServerReq.create!([
