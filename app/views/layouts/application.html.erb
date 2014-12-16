@@ -2,7 +2,7 @@
 <html ng-app="Saps">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>SAP Integrated Programmable Model</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -11,215 +11,215 @@
 </head>
 <body>
   
-	<nav class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
-	  <div class="container">
-		<div class="navbar-header">
-		  <a href="" class="navbar-brand scroll-top">Home</a>
-		  <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		  </a>
-		</div>
-		<div class="navbar-collapse collapse" id="navbar">
-		  <ul class="nav navbar-nav">
-			<li><a href="#sec1">Input</a></li>
-			<li><a href="#sec2">Analytics</a></li>
-			<li><a href="#sec3">Results</a></li>
+  <nav class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
+    <div class="container">
+    <div class="navbar-header">
+      <a href="" class="navbar-brand scroll-top">Home</a>
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav">
+      <li><a href="#sec1">Input</a></li>
+      <li><a href="#sec2">Analytics</a></li>
+      <li><a href="#sec3">Results</a></li>
       <li><a href="" data-toggle="modal" data-target="#myModal">Settings</a></li>
-			
-		  </ul>
-		</div>
-	   </div>
-	</nav>
-
-	<div class="header alt vert">
-	  <div class="container">
-		
-		<h1 class="heading">SAP</h1>
-		  <p class="lead">Integrated Programmable Model</p>
-		  <div>&nbsp;</div>
-		  <a href="#sec1" class="btn btn-default btn-lg">Get Started</a>
-	  </div>
-	</div>
-
-	<hr>
-
-	<div id="sec1" class="blurb">
-		<h2 class="text-center">Input</h2>
-		<div class="container well well-lg">
-			<div class="row" ng-controller="InputCtrl">
-				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingOne">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							<h4 class="panel-title text-center">Landscape<span class="resulttext">{{landscape}}</span></h4>
-							</a>
-						</div>
-						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-							<ul class="list-group">
-								<li class="list-group-item listitem" ng-repeat="landscape in landscapes" ng-click="setLandscape(landscape)">{{landscape.name}}</li>
-							</ul>
-     
-						</div>
-					</div>
-					
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingTwo">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								<h4 class="panel-title text-center">SAP Products</h4>
-							</a>
       
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-							<ul class="list-group">
-								<li class="list-group-item listitem" ng-repeat="product in products" ng-click="setProduct(product)">{{product.name}}</li>
-							</ul>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingThree">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								<h4 class="panel-title text-center">Platform</h4>
-							</a>
-      
-						</div>
-						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-							<ul class="list-group">
-								<li class="list-group-item listitem" ng-repeat="platform in platforms" ng-click="setPlatform(platform)">{{platform.name}}</li>
-							</ul>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingFour">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-								<h4 class="panel-title text-center">Components</h4>
-							</a>
-						</div>
-						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-							<ul class="list-group">
-								<li class="list-group-item listitem" ng-repeat="component in components">
-									<div>
-										<div>{{component.name}}</div>
-										<div>
-											<up-vote min="component.min" max="component.max" value="component.scale"></up-vote>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-					
+      </ul>
+    </div>
+     </div>
+  </nav>
 
-
-
-				</div>
-				<div>
-            <span ng-init="catalog='Custom'"></span >
-						<select ng-model="catalog" ng-options="item for item in cats">
-						</select>
-						<button class="btn btn-primary pull-right" ng-click="calculate()"><a href="#sec2" class="linkcolor">Calculate</a></button>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-	<hr>
-	
-	
-	<div class="blurb" id="sec2" ng-controller="AnalyticsCtrl">
-	  <div class="container">
-		<div class="row">
-		  <div class="col-md-12 text-center">
-			<h2>Analytics</h2>
-			<table class="table table-condensed textalign">
-  					<thead>
-  						<tr>
-  							<th class="hidden-xs">Landscape</th>
-  							<th>SAP Product</th>
-  							<th class="hidden-xs">Platform</th>
-  							<th>Component</th>
-  							
-  							<th class="hidden-xs">vCPU</th>
-  							<th class="hidden-xs">vRAM</th>
-  							<th class="hidden-xs hidden-sm">Net IO</th>
-  							<th class="hidden-xs hidden-sm">IOPS</th>
-  							<th class="hidden-xs hidden-sm">vDisk</th>
-							<th>Catalog</th>
-							<th>Customize</th>
-  						</tr>
-  					</thead>
-  					<tbody>
-  						<tr>
-  							<td class="hidden-xs">{{selection.landscape}}</td>
-  							<td>{{selection.product}}</td>
-  							<td class="hidden-xs">{{selection.platform}}</td>
-  							<td><div ng-repeat="d in data">{{d.server}}</div></td>
-							<td class="hidden-xs"><div ng-repeat="d in data">{{d.vcpu}}</div></td>
-							<td class="hidden-xs"><div ng-repeat="d in data">{{d.vram}}</div></td>
-							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.netio}}</div></td>
-							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.iops}}</div></td>
-							<td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.vdisk}}</div></td>
-							<td ><div ng-repeat="d in data">{{d.catalog}}</div></td>
-							<td>
-								<div ng-repeat="cat in data">
-                  <span ng-init="cat.type='Virtual'"></span >
-									<select ng-model="cat.type" ng-options="item for item in options">
-									</select>
-								</div>
-							</td>
-						</tr>
-  					</tbody>
-				</table>
-			<div>
-				<button class="btn btn-primary pull-right" ng-click="result()"><a href="#sec3" class="linkcolor">Results</a></button>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-
-	<hr>
-
-	<div class="blurb bright" ng-controller="ResultsCtrl">
-	  <div class="container">
-	  <div class="row">
-		  <div class="col-md-6 col-md-offset-3 text-center">
-			<h3 id="sec3">Results</h3>
-			<table class="table table-condensed">
-				<tr>
-					<td>Total No of Physical Servers for Virtualization</td>
-					<td>{{results.total_physical_server_for_virtualization}}</td>
-				</tr>
-				<tr>
-					<td>
-						Include Failover Capacity
-					</td>
-					<td>{{results.include_failover_capacity}}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						No of Physical Servers Opted
-					</td>
-					<td>{{results.no_physical_servers_opted}}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Total Physical Servers
-					</td>
-					<td>{{results.total_physical_servers}}
-					</td>
-				</tr>
-			</table>
-		  </div>
-	  </div>
-	  
-	  
-	  </div>
+  <div class="header alt vert">
+    <div class="container">
+    
+    <h1 class="heading">SAP</h1>
+      <p class="lead">Integrated Programmable Model</p>
+      <div>&nbsp;</div>
+      <a href="#sec1" class="btn btn-default btn-lg">Get Started</a>
+    </div>
   </div>
-	
+
+  <hr>
+
+  <div id="sec1" class="blurb">
+    <h2 class="text-center">Input</h2>
+    <div class="container well well-lg">
+      <div class="row" ng-controller="InputCtrl">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h4 class="panel-title text-center">Landscape<span class="resulttext">{{landscape}}</span></h4>
+              </a>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <ul class="list-group">
+                <li class="list-group-item listitem" ng-repeat="landscape in landscapes" ng-click="setLandscape(landscape)">{{landscape.name}}</li>
+              </ul>
+     
+            </div>
+          </div>
+          
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <h4 class="panel-title text-center">SAP Products</h4>
+              </a>
+      
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <ul class="list-group">
+                <li class="list-group-item listitem" ng-repeat="product in products" ng-click="setProduct(product)">{{product.name}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <h4 class="panel-title text-center">Platform</h4>
+              </a>
+      
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <ul class="list-group">
+                <li class="list-group-item listitem" ng-repeat="platform in platforms" ng-click="setPlatform(platform)">{{platform.name}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <h4 class="panel-title text-center">Components</h4>
+              </a>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+              <ul class="list-group">
+                <li class="list-group-item listitem" ng-repeat="component in components">
+                  <div>
+                    <div>{{component.name}}</div>
+                    <div>
+                      <up-vote min="component.min" max="component.max" value="component.scale"></up-vote>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+
+
+
+        </div>
+        <div>
+            <span ng-init="catalog='Custom'"></span >
+            <select ng-model="catalog" ng-options="item for item in cats">
+            </select>
+            <button class="btn btn-primary pull-right" ng-click="calculate()"><a href="#sec2" class="linkcolor">Calculate</a></button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+  
+  <div class="blurb" id="sec2" ng-controller="AnalyticsCtrl">
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+      <h2>Analytics</h2>
+      <table class="table table-condensed textalign">
+            <thead>
+              <tr>
+                <th class="hidden-xs">Landscape</th>
+                <th>SAP Product</th>
+                <th class="hidden-xs">Platform</th>
+                <th>Component</th>
+                
+                <th class="hidden-xs">vCPU</th>
+                <th class="hidden-xs">vRAM</th>
+                <th class="hidden-xs hidden-sm">Net IO</th>
+                <th class="hidden-xs hidden-sm">IOPS</th>
+                <th class="hidden-xs hidden-sm">vDisk</th>
+              <th>Catalog</th>
+              <th>Customize</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="hidden-xs">{{selection.landscape}}</td>
+                <td>{{selection.product}}</td>
+                <td class="hidden-xs">{{selection.platform}}</td>
+                <td><div ng-repeat="d in data">{{d.server}}</div></td>
+              <td class="hidden-xs"><div ng-repeat="d in data">{{d.vcpu}}</div></td>
+              <td class="hidden-xs"><div ng-repeat="d in data">{{d.vram}}</div></td>
+              <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.netio}}</div></td>
+              <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.iops}}</div></td>
+              <td class="hidden-xs hidden-sm"><div ng-repeat="d in data">{{d.vdisk}}</div></td>
+              <td ><div ng-repeat="d in data">{{d.catalog}}</div></td>
+              <td>
+                <div ng-repeat="cat in data">
+                  <span ng-init="cat.type='Virtual'"></span >
+                  <select ng-model="cat.type" ng-options="item for item in options">
+                  </select>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+        </table>
+      <div>
+        <button class="btn btn-primary pull-right" ng-click="result()"><a href="#sec3" class="linkcolor">Results</a></button>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="blurb bright" ng-controller="ResultsCtrl">
+    <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+      <h3 id="sec3">Results</h3>
+      <table class="table table-condensed">
+        <tr>
+          <td>Total No of Physical Servers for Virtualization</td>
+          <td>{{results.total_physical_server_for_virtualization}}</td>
+        </tr>
+        <tr>
+          <td>
+            Include Failover Capacity
+          </td>
+          <td>{{results.include_failover_capacity}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            No of Physical Servers Opted
+          </td>
+          <td>{{results.no_physical_servers_opted}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Total Physical Servers
+          </td>
+          <td>{{results.total_physical_servers}}
+          </td>
+        </tr>
+      </table>
+      </div>
+    </div>
+    
+    
+    </div>
+  </div>
+  
 
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -229,8 +229,8 @@
         <h4 class="modal-title" id="myModalLabel">Settings</h4>
       </div>
       <div class="modal-body">
-        	<div class="row">
-        		<div class="col-lg-6 col-md-6" ng-controller="DesignCtrl">
+          <div class="row">
+            <div class="col-lg-6 col-md-6" ng-controller="DesignCtrl">
               <div>
                   <h4>Design Rationale <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -247,159 +247,217 @@
                   </div></h4>
                   
               </div>
-        			<form class="form-horizontal" role="form">
-        				<div class="form-group">
-        					<label for="pCoreValue" class="col-lg-3">1 pCore</label>
-                  			<div class="col-lg-4">
-        						<input type="number" ng-model="design.pcore" class="form-control" id="pCoreValue">
-                  			</div>
-                  			<div class="col-lg-5">vCPU in Qty</div>
-        				</div>
-        				<div class="form-group">
-        					<label for="pRAMValue" class="col-lg-3">1 pRAM</label>
-        					<div class="col-lg-4">
-        						<input type="number" ng-model="design.pram" class="form-control" id="pRAMValue">
-        					</div>
-        					<div class="col-lg-5">vRAM in GB</div>
-        				</div>
-        				<div class="form-group">
-        					<label for="pNICValue" class="col-lg-3">1 pNIC</label>
-        					<div class="col-lg-4">
-        						<input type="number" ng-model="design.pnic" class="form-control" id="pNICValue">
-        					</div>
-        					<div class="col-lg-5">vCPU in Qty</div>
-        				</div>
-        				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
-        			</form>
-        		</div>
-        		<div class="col-lg-6 col-md-6" ng-controller="BladeCtrl">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="pCoreValue" class="col-lg-3">1 pCore</label>
+                        <div class="col-lg-4">
+                    <input type="number" ng-model="design.pcore" class="form-control" id="pCoreValue">
+                        </div>
+                        <div class="col-lg-5">vCPU in Qty</div>
+                </div>
+                <div class="form-group">
+                  <label for="pRAMValue" class="col-lg-3">1 pRAM</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="design.pram" class="form-control" id="pRAMValue">
+                  </div>
+                  <div class="col-lg-5">vRAM in GB</div>
+                </div>
+                <div class="form-group">
+                  <label for="pNICValue" class="col-lg-3">1 pNIC</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="design.pnic" class="form-control" id="pNICValue">
+                  </div>
+                  <div class="col-lg-5">vCPU in Qty</div>
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+              </form>
+            </div>
+            <div class="col-lg-6 col-md-6" ng-controller="BladeCtrl">
               <div><h4>Parameters per Blade</h4></div>
-        			<form class="form-horizontal" role="form">
-        				<div class="form-group">
-        					<label for="totalpcores" class="col-lg-5">Total pCore</label>
-                  			<div class="col-lg-4">
-        						<input type="number" ng-model="parameters.pcore" class="form-control" id="totalpcores">
-                  			</div>
-                  			
-        				</div>
-        				<div class="form-group">
-        					<label for="totalpmemory" class="col-lg-5">pMemory in GB</label>
-        					<div class="col-lg-4">
-        						<input type="number" ng-model="parameters.pram" class="form-control" id="totalpmemory">
-        					</div>
-        					
-        				</div>
-        				<div class="form-group">
-        					<label for="totalpnic" class="col-lg-5">pNIC in Gbits</label>
-        					<div class="col-lg-4">
-        						<input type="number" ng-model="parameters.pnic" class="form-control" id="totalpnic">
-        					</div>
-        					
-        				</div>
-        				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
-        			</form>
-        		</div>
-        	</div>
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="totalpcores" class="col-lg-5">Total pCore</label>
+                        <div class="col-lg-4">
+                    <input type="number" ng-model="parameters.pcore" class="form-control" id="totalpcores">
+                        </div>
+                        
+                </div>
+                <div class="form-group">
+                  <label for="totalpmemory" class="col-lg-5">pMemory in GB</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="parameters.pram" class="form-control" id="totalpmemory">
+                  </div>
+                  
+                </div>
+                <div class="form-group">
+                  <label for="totalpnic" class="col-lg-5">pNIC in Gbits</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="parameters.pnic" class="form-control" id="totalpnic">
+                  </div>
+                  
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+              </form>
+            </div>
+          </div>
         <hr>
-        	<div class="row">
-        		<div class="col-lg-6 col-md-6" ng-controller="ResourceCtrl">
+          <div class="row">
+            <div class="col-lg-6 col-md-6" ng-controller="ResourceCtrl">
               <div><h4>Resource Weightage %</h4></div>
-        			<form class="form-horizontal" role="form">
-        				<div class="form-group">
-        					<label for="rcpu" class="col-lg-5">CPU</label>
-                  			<div class="col-lg-4">
-        						<input type="number" ng-model="resource.cpu" min="0.0" max="100.0" class="form-control" id="rcpu">
-                  			</div>
-                  			
-        				</div>
-        				<div class="form-group">
-        					<label for="rmemory" class="col-lg-5">Memory</label>
-        					<div class="col-lg-4">
-        						<input type="number" ng-model="resource.ram" min="0.0" max="100.0" class="form-control" id="rmemory">
-        					</div>
-        					
-        				</div>
-        				<div class="form-group">
-        					<label for="rnic" class="col-lg-5">NIC</label>
-        					<div class="col-lg-4">
-        						<input type="number" ng-model="resource.nic" min="0.0" max="100.0" class="form-control" id="rnic">
-        					</div>
-        					
-        				</div>
-        				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
-        			</form>
-        		</div>
-        		<div class="col-lg-6 col-md-6" ng-controller="AssumptionsTargetCtrl">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="rcpu" class="col-lg-5">CPU</label>
+                        <div class="col-lg-4">
+                    <input type="number" ng-model="resource.cpu" min="0.0" max="100.0" class="form-control" id="rcpu">
+                        </div>
+                        
+                </div>
+                <div class="form-group">
+                  <label for="rmemory" class="col-lg-5">Memory</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="resource.ram" min="0.0" max="100.0" class="form-control" id="rmemory">
+                  </div>
+                  
+                </div>
+                <div class="form-group">
+                  <label for="rnic" class="col-lg-5">NIC</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="resource.nic" min="0.0" max="100.0" class="form-control" id="rnic">
+                  </div>
+                  
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+              </form>
+            </div>
+            <div class="col-lg-6 col-md-6" ng-controller="AssumptionsTargetCtrl">
               <div><h4>Assumptions at Target</h4></div>
-        			<form class="form-horizontal" role="form">
-        				<div class="form-group">
-        					<label for="cpuutil" class="col-lg-5">VH CPU Utilization (%)</label>
-                  			<div class="col-lg-4">
-        						<input type="number" ng-model="percentage" class="form-control" id="cpuutil">
-                  			</div>
-                  			
-        				</div>
-        				<div class="form-group">
-        					<label for="decimalval" class="col-lg-5">Decimal</label>
-        					<div class="col-lg-4">
-        						<input type="number" ng-model="decimal" class="form-control" id="decimalval" disabled>
-        					</div>
-        					
-        				</div>
-        				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
-        			</form>
-        		</div>
-        	</div>
-        	<hr>
-        	<div class="row">
-        		<div class="col-lg-6 col-md-6" ng-controller="ApptodbCtrl">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="cpuutil" class="col-lg-5">VH CPU Utilization (%)</label>
+                        <div class="col-lg-4">
+                    <input type="number" ng-model="percentage" class="form-control" id="cpuutil">
+                        </div>
+                        
+                </div>
+                <div class="form-group">
+                  <label for="decimalval" class="col-lg-5">Decimal</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="decimal" class="form-control" id="decimalval" disabled>
+                  </div>
+                  
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+              </form>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-6 col-md-6" ng-controller="ApptodbCtrl">
               <div><h4>Application to Database Ratio</h4></div>
-        			<form class="form-horizontal" role="form">
-        				<div class="form-group">
-        					<label for="app" class="col-lg-5">Application</label>
-                  			<div class="col-lg-4">
-        						<input type="number" ng-model="application" min="0.0" max="1.0" class="form-control" id="app">
-                  			</div>
-                  			
-        				</div>
-        				<div class="form-group">
-        					<label for="db" class="col-lg-5">Database</label>
-        					<div class="col-lg-4">
-        						<input type="number" ng-model="database" min="0.0" max="1.0" class="form-control" id="db">
-        					</div>
-        					
-        				</div>
-        				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
-        			</form>
-        		</div>
-        		<div class="col-lg-6 col-md-6" ng-controller="ReqCtrl">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="app" class="col-lg-5">Application</label>
+                        <div class="col-lg-4">
+                    <input type="number" ng-model="application" min="0.0" max="1.0" class="form-control" id="app">
+                        </div>
+                        
+                </div>
+                <div class="form-group">
+                  <label for="db" class="col-lg-5">Database</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="database" min="0.0" max="1.0" class="form-control" id="db">
+                  </div>
+                  
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+              </form>
+            </div>
+            <div class="col-lg-6 col-md-6" ng-controller="ReqCtrl">
               <div><h4>VMware HA Server Requirement</h4></div>
-        			<form class="form-horizontal" role="form">
-        				<div class="form-group">
-        					<label for="protect" class="col-lg-5">Protected</label>
-                  			<div class="col-lg-4">
-        						<input type="number" ng-model="require.protected" class="form-control" id="protect">
-                  			</div>
-                  			
-        				</div>
-        				<div class="form-group">
-        					<label for="failover" class="col-lg-5">Failover Oty</label>
-        					<div class="col-lg-4">
-        						<input type="number" ng-model="require.failover" class="form-control" id="failover">
-        					</div>
-        					
-        				</div>
-        				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
-        			</form>
-        		</div>
-        	</div>
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="protect" class="col-lg-5">Protected</label>
+                        <div class="col-lg-4">
+                    <input type="number" ng-model="require.protected" class="form-control" id="protect">
+                        </div>
+                        
+                </div>
+                <div class="form-group">
+                  <label for="failover" class="col-lg-5">Failover Oty</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="require.failover" class="form-control" id="failover">
+                  </div>
+                  
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+              </form>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <div><h4>Update tables</h4></div>
+              <form class="form-horizontal" role="form">
+                <div class="form-group" ng-controller="QsizerCtrl">
+                  <div class="col-lg-6"><label>QuickSizer</label>
+                    <input type="file" accept=".csv" id="quick">
+                  </div>
+                  <div class="col-lg-6">
+                    <button type="button" class="btn btn-primary" ng-click="fetch()">Download CSV</button>
+                    <button type="button" class="btn btn-primary" ng-click="save()">Upload CSV</button>
+                    
+                  </div>
+                </div>
+                <div class="form-group" ng-controller="ServerListCtrl">
+                  <div class="col-lg-6">
+                    <label>ServerList</label>
+                    <input type="file" accept=".csv" id="serverlist">
+                  </div>
+                  <div class="col-lg-6">
+                    <button type="button" class="btn btn-primary" ng-click="fetch()">Download CSV</button>
+                    <button type="button" class="btn btn-primary" ng-click="save()">Upload CSV</button>
+                  </div>
+                </div>
+                <div class="form-group" ng-controller="InfraCatCtrl">
+                  <div class="col-lg-6">
+                    <label>Infranstructure Catalog</label>
+                    <input type="file" accept=".csv" id="serverlist" ng-model="data">
+                  </div>
+                  <div class="col-lg-6">
+                    <button type="button" class="btn btn-primary" ng-click="fetch()">Download CSV</button>
+                    <button type="button" class="btn btn-primary" ng-click="send()">Upload CSV</button>
+                  </div>
+                </div>
+                
+              </form>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div><h4>User Access</h4></div>
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="protect" class="col-lg-5">Protected</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="require.protected" class="form-control" id="protect">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="failover" class="col-lg-5">Failover Oty</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="require.failover" class="form-control" id="failover">
+                  </div>
+                  
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+              </form>
+            </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-</div>
+  </div>
  
   
   

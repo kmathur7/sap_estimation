@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20141214180359) do
   end
 
   create_table "assumptions_at_targets", force: true do |t|
-    t.string  "name"
     t.integer "percentage"
     t.decimal "decimal"
   end
@@ -28,10 +27,6 @@ ActiveRecord::Schema.define(version: 20141214180359) do
     t.integer "pcore"
     t.integer "pram"
     t.integer "pnic"
-  end
-
-  create_table "catalogs", force: true do |t|
-    t.string "name"
   end
 
   create_table "components", force: true do |t|

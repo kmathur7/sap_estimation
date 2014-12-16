@@ -238,6 +238,63 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
     };
 	})
 
+  .controller('InfraCatCtrl',function($scope,$http){
+		  
+    $scope.fetch = function(){
+      $http.get('../admin/infra.csv')
+	       .success(function(data){
+                               var hiddenElement = document.createElement('a');
+                               hiddenElement.href = 'data:attachment/csv,' + encodeURI(data);
+                               hiddenElement.target = '_blank';
+                               hiddenElement.download = 'InfranstructureCatalog.csv';
+                               hiddenElement.click();
+                            });
+     };
+    $scope.send = function(){
+      var payload = {
+        data:$scope.data
+      };
+      $http.post('../admin/infrastructure/',payload)
+	       .success(function(data){
+                               console.log("payload sent")
+                            });
+      
+    };
+    
+	})
+
+  .controller('ServerListCtrl',function($scope,$http){
+		  
+    $scope.fetch = function(){
+      
+      $http.get('../admin/server.csv')
+	       .success(function(data){
+                               
+                               var hiddenElement = document.createElement('a');
+                               hiddenElement.href = 'data:attachment/csv,' + encodeURI(data);
+                               hiddenElement.target = '_blank';
+                               hiddenElement.download = 'ServerList.csv';
+                               hiddenElement.click();
+                            });
+    };
+	})
+
+  .controller('QsizerCtrl',function($scope,$http){
+		  
+    $scope.fetch = function(){
+      
+      $http.get('../admin/qsizer.csv')
+	       .success(function(data){
+                               
+                               var hiddenElement = document.createElement('a');
+                               hiddenElement.href = 'data:attachment/csv,' + encodeURI(data);
+                               hiddenElement.target = '_blank';
+                               hiddenElement.download = 'QuickSizer.csv';
+                               hiddenElement.click();
+                            });
+    };
+	})
+
   .directive('upVote', function(){
   return    {
     restrict:'E',
