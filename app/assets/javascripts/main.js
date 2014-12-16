@@ -1,4 +1,4 @@
-angular.module('Saps',['ngRoute','angular-loading-bar'])
+angular.module('Saps',['ngRoute','angular-loading-bar','angularFileUpload'])
 
    .factory('dataService',function(){
 		var selection;
@@ -238,7 +238,7 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
     };
 	})
 
-  .controller('InfraCatCtrl',function($scope,$http){
+  .controller('InfraCatCtrl',function($scope,$http,$upload){
 		  
     $scope.fetch = function(){
       $http.get('../admin/infra.csv')
@@ -250,20 +250,31 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
                                hiddenElement.click();
                             });
      };
+
     $scope.send = function(){
-      var payload = {
-        data:$scope.data
-      };
-      $http.post('../admin/infrastructure/',payload)
-	       .success(function(data){
-                               console.log("payload sent")
-                            });
+      var file = $scope.files;
+      $scope.upload = $upload.upload({
+        url: '../admin/infrastructure/', // upload.php script, node.js route, or servlet url
+        method: 'POST',
+        //headers: {'Authorization': 'xxx'}, // only for html5
+        //withCredentials: true,
+        file: file // single file or a list of files. list is only for html5
+        //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+        //fileFormDataName: myFile, // file formData name ('Content-Disposition'), server side request form name
+                                    // could be a list of names for multiple files (html5). Default is 'file'
+        //formDataAppender: function(formData, key, val){}  // customize how data is added to the formData. 
+                                                            // See #40#issuecomment-28612000 for sample code
+
+      }).success(function(data, status, headers, config) {
+        // file is uploaded successfully
+        console.log('file ' + config.file.name + 'is uploaded successfully. Response: ' + data);
+      });
       
     };
     
 	})
 
-  .controller('ServerListCtrl',function($scope,$http){
+  .controller('ServerListCtrl',function($scope,$http,$upload){
 		  
     $scope.fetch = function(){
       
@@ -277,9 +288,30 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
                                hiddenElement.click();
                             });
     };
+    
+    $scope.send = function(){
+      var file = $scope.files;
+      $scope.upload = $upload.upload({
+        url: '../admin/servercomponent', // upload.php script, node.js route, or servlet url
+        method: 'POST',
+        //headers: {'Authorization': 'xxx'}, // only for html5
+        //withCredentials: true,
+        file: file // single file or a list of files. list is only for html5
+        //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+        //fileFormDataName: myFile, // file formData name ('Content-Disposition'), server side request form name
+                                    // could be a list of names for multiple files (html5). Default is 'file'
+        //formDataAppender: function(formData, key, val){}  // customize how data is added to the formData. 
+                                                            // See #40#issuecomment-28612000 for sample code
+
+      }).success(function(data, status, headers, config) {
+        // file is uploaded successfully
+        console.log('file ' + config.file.name + 'is uploaded successfully. Response: ' + data);
+      });
+      
+    };
 	})
 
-  .controller('QsizerCtrl',function($scope,$http){
+  .controller('QsizerCtrl',function($scope,$http,$upload){
 		  
     $scope.fetch = function(){
       
@@ -292,6 +324,27 @@ angular.module('Saps',['ngRoute','angular-loading-bar'])
                                hiddenElement.download = 'QuickSizer.csv';
                                hiddenElement.click();
                             });
+    };
+    
+    $scope.send = function(){
+      var file = $scope.files;
+      $scope.upload = $upload.upload({
+        url: '../admin/quicksizer/', // upload.php script, node.js route, or servlet url
+        method: 'POST',
+        //headers: {'Authorization': 'xxx'}, // only for html5
+        //withCredentials: true,
+        file: file // single file or a list of files. list is only for html5
+        //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+        //fileFormDataName: myFile, // file formData name ('Content-Disposition'), server side request form name
+                                    // could be a list of names for multiple files (html5). Default is 'file'
+        //formDataAppender: function(formData, key, val){}  // customize how data is added to the formData. 
+                                                            // See #40#issuecomment-28612000 for sample code
+
+      }).success(function(data, status, headers, config) {
+        // file is uploaded successfully
+        console.log('file ' + config.file.name + 'is uploaded successfully. Response: ' + data);
+      });
+      
     };
 	})
 

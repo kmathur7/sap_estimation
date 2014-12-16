@@ -29,8 +29,10 @@ Rails.application.routes.draw do
   post 'admin/vmware/' => 'admin#setvmhaserverreqq'
   get 'admin/infra' => 'admin#getinfracatlogvalues'
   post 'admin/infrastructure' =>'admin#setinfracatlogvalues'
-  get '/admin/qsizer' => 'admin#getquicksizervalues'
-  get '/admin/server' => 'admin#getservervalues'
+  get 'admin/qsizer' => 'admin#getquicksizervalues'
+  post 'admin/quicksizer' => 'admin#setquicksizervalues'
+  get 'admin/server' => 'admin#getservervalues'
+  post 'admin/servercomponent' => 'admin#setservervalues'
   
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

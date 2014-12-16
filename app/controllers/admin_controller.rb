@@ -66,7 +66,8 @@ class AdminController < ApplicationController
   
   # Action to upload and replace the Infrastructure Catalog values
   def setinfracatlogvalues
-    Infracatalog.import(params[:data])
+    Infracatalog.import(params[:file].path)
+    
   end
   
   # Action to download Quick Sizer table values in CSV format
@@ -78,6 +79,11 @@ class AdminController < ApplicationController
     end
   end
   
+  # Action to upload and replace the Quick Sizer values
+  def setquicksizervalues
+    QuickSizer.import(params[:file].path)
+  end
+  
   # Action to download Server Component values in CSV format
   def getservervalues
     @component = Component.all
@@ -85,6 +91,11 @@ class AdminController < ApplicationController
     format.html
       format.csv { send_data @component.as_csv }
     end
+  end
+  
+  # Action to upload and replace the Quick Sizer values
+  def setservervalues
+    Component.import(params[:file].path)
   end
   
 end

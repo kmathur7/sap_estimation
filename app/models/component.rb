@@ -1,7 +1,7 @@
 class Component < ActiveRecord::Base
   def self.import(file)
     Component.delete_all
-    CSV.foreach(file.path, headers: true) do |row|
+    CSV.foreach(file, headers: true) do |row|
       Component.create! row.to_hash
     end
   end

@@ -1,7 +1,7 @@
 class QuickSizer < ActiveRecord::Base
 def self.import(file)
     QuickSizer.delete_all
-    CSV.foreach(file.path, headers: true) do |row|
+    CSV.foreach(file, headers: true) do |row|
         QuickSizer.create! row.to_hash
     end
 end

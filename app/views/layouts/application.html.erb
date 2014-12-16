@@ -400,28 +400,29 @@
               <form class="form-horizontal" role="form">
                 <div class="form-group" ng-controller="QsizerCtrl">
                   <div class="col-lg-6"><label>QuickSizer</label>
-                    <input type="file" accept=".csv" id="quick">
+                    <input type="file" accept=".csv" ng-file-select ng-model="files">
                   </div>
                   <div class="col-lg-6">
                     <button type="button" class="btn btn-primary" ng-click="fetch()">Download CSV</button>
-                    <button type="button" class="btn btn-primary" ng-click="save()">Upload CSV</button>
+                    <button type="button" class="btn btn-primary" ng-click="send()">Upload CSV</button>
                     
                   </div>
                 </div>
                 <div class="form-group" ng-controller="ServerListCtrl">
                   <div class="col-lg-6">
                     <label>ServerList</label>
-                    <input type="file" accept=".csv" id="serverlist">
+                    <input type="file" accept=".csv" ng-file-select ng-model="files">
                   </div>
                   <div class="col-lg-6">
                     <button type="button" class="btn btn-primary" ng-click="fetch()">Download CSV</button>
-                    <button type="button" class="btn btn-primary" ng-click="save()">Upload CSV</button>
+                    <button type="button" class="btn btn-primary" ng-click="send()">Upload CSV</button>
                   </div>
                 </div>
                 <div class="form-group" ng-controller="InfraCatCtrl">
                   <div class="col-lg-6">
                     <label>Infranstructure Catalog</label>
-                    <input type="file" accept=".csv" id="serverlist" ng-model="data">
+                    <input type="file" accept=".csv" ng-file-select ng-model="files">
+                    
                   </div>
                   <div class="col-lg-6">
                     <button type="button" class="btn btn-primary" ng-click="fetch()">Download CSV</button>
