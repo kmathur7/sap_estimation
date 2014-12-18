@@ -32,6 +32,8 @@ class QsizerController < ApplicationController
       while $i < component[:scale] do
       data = Hash.new
         data['landscape'] = params[:landscape]
+        data['product'] = params[:product]
+        data['platform'] = params[:platform]
       data['server'] = component[:name]
         vcpu = vCPU(server,saps,saps_per_core,application,database)
       data['vcpu'] = vcpu
@@ -170,24 +172,26 @@ class QsizerController < ApplicationController
   end
   
   def output
-    a = request.POST
+    data_from_post_request = request.POST
+    json_data = data_from_post_request[:_json]    
     catalog = Array.new
     scale = Array.new
     type = Array.new #stores whether virtual or Physical
-    b = Array.new
-    b=a[:_json]
-    b.each do |dataset|
-      catalog << dataset[:catalog]
-      scale << 1
-      @landscape = dataset[:landscape]
-      type << dataset[:type]
+    json_data.each do |element|
+      element.each do |elem|
+        catalog << elem["catalog"]
+        scale << 1
+        @landscape = elem["landscape"]
+        type << elem["type"]
+      end
     end
+    
     subcatalog = Infracatalog.pluck(:subcatalog)
     cpu = Infracatalog.pluck(:vcpu)
     ram = Infracatalog.pluck(:vram)
     nic = Infracatalog.pluck(:vnic)
-    catalog_size = subcatalog.size()
-    catalogsize = catalog.size()
+    catalog_size = subcatalog.size()#actual size
+    catalogsize = catalog.size()# output size
     pcore = fetchpcore(@landscape)
     pram = fetchpram(@landscape)
     pnic = fetchpnic(@landscape)
@@ -212,34 +216,40 @@ class QsizerController < ApplicationController
     servercpu=Array.new(catalog_size,0)
     serverram=Array.new(catalog_size,0)
     servernic=Array.new(catalog_size,0)
-    
+   
     j=0 # count of the types of the catalogs got
       while j < catalogsize
+        
         i=0  # total count of the types of the catalogs 
           while i < catalog_size
+           
               if(subcatalog[i]===catalog[j])
                 if(type[j]==="Physical")
-                    physical[i]=scale[j]
-                     virtual[i]=0
+                  puts ""
+                    physical[i]=physical[i]+scale[j]
                   else
-                    virtual[i]=scale[j]
-                    physical[i]=0
-                    totalvcpu[i]=virtual[i]*cpu[i]
-                    totalvram[i]=virtual[i]*ram[i]
-                    totalvnic[i]=virtual[i]*nic[i]
-                  #Design rationale calculation
-                    totalpcores[i]=totalvcpu[i]/ pcore
-                    totalpram[i]=totalvram[i]/ pram
-                    totalpnic[i]=(totalvnic[i]/ pnic).ceil
-                   
-                    servercpu[i]=(totalpcores[i]/ pcore_blade).ceil
-                    serverram[i]=(totalpram[i]/ pram_blade).ceil
-                    servernic[i]=(totalpnic[i]/ pnic_blade).ceil
+                    virtual[i]=virtual[i]+scale[j]
+                    
                   end
               end
               i+=1
           end
           j+=1
+    end
+    
+    p=0
+    while p < catalog_size
+          totalvcpu[p]=virtual[p]*cpu[p]
+          totalvram[p]=virtual[p]*ram[p]
+          totalvnic[p]=virtual[p]*nic[p]
+       #Design rationale calculation
+          totalpcores[p]=totalvcpu[p]/ pcore
+          totalpram[p]=totalvram[p]/ pram
+          totalpnic[p]=(totalvnic[p]/ pnic).ceil
+          servercpu[p]=(totalpcores[p]/ pcore_blade).ceil
+          serverram[p]=(totalpram[p]/ pram_blade).ceil
+          servernic[p]=(totalpnic[p]/ pnic_blade).ceil
+      p+=1
     end
     totalservercpu=servercpu.sum #L26
     totalserverram=serverram.sum #M26

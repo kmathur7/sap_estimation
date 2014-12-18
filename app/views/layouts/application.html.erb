@@ -23,9 +23,9 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar">
       <ul class="nav navbar-nav">
-      <li><a href="#sec1">Input</a></li>
-      <li><a href="#sec2">Analytics</a></li>
-      <li><a href="#sec3">Results</a></li>
+      <li><a href="#input">Input</a></li>
+      <li><a href="#analytics">Analytics</a></li>
+      <li><a href="#results">Results</a></li>
       <li><a href="" data-toggle="modal" data-target="#myModal">Settings</a></li>
       
       </ul>
@@ -39,13 +39,13 @@
     <h1 class="heading">SAP</h1>
       <p class="lead">Integrated Programmable Model</p>
       <div>&nbsp;</div>
-      <a href="#sec1" class="btn btn-default btn-lg">Get Started</a>
+      <a href="#input" class="btn btn-default btn-lg">Get Started</a>
     </div>
   </div>
 
   <hr>
 
-  <div id="sec1" class="blurb">
+  <div id="input" class="blurb">
     <h2 class="text-center">Input</h2>
     <div class="container well well-lg">
       <div class="row" ng-controller="InputCtrl">
@@ -118,7 +118,7 @@
             <span ng-init="catalog='Custom'"></span >
             <select ng-model="catalog" ng-options="item for item in cats">
             </select>
-            <button class="btn btn-primary pull-right" ng-click="calculate()"><a href="#sec2" class="linkcolor">Calculate</a></button>
+            <button class="btn btn-primary pull-right" ng-click="calculate()"><a href="#analytics" class="linkcolor">Calculate</a></button>
           
         </div>
       </div>
@@ -127,7 +127,7 @@
   <hr>
   
   
-  <div class="blurb" id="sec2" ng-controller="AnalyticsCtrl">
+  <div class="blurb" id="analytics" ng-controller="AnalyticsCtrl">
     <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -150,10 +150,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="hidden-xs">{{selection.landscape}}</td>
-                <td>{{selection.product}}</td>
-                <td class="hidden-xs">{{selection.platform}}</td>
+              <tr ng-repeat="data in analyticsdata">
+                <td class="hidden-xs"><div>{{data[0].landscape}}</div></td>
+                <td><div>{{data[0].product}}</div></td>
+                <td class="hidden-xs"><div>{{data[0].platform}}</div></td>
                 <td><div ng-repeat="d in data">{{d.server}}</div></td>
               <td class="hidden-xs"><div ng-repeat="d in data">{{d.vcpu}}</div></td>
               <td class="hidden-xs"><div ng-repeat="d in data">{{d.vram}}</div></td>
@@ -172,7 +172,7 @@
             </tbody>
         </table>
       <div>
-        <button class="btn btn-primary pull-right" ng-click="result()"><a href="#sec3" class="linkcolor">Results</a></button>
+        <button class="btn btn-primary pull-right" ng-click="result()"><a href="#results" class="linkcolor">Results</a></button>
       </div>
       </div>
     </div>
@@ -185,7 +185,7 @@
     <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3 text-center">
-      <h3 id="sec3">Results</h3>
+      <h3 id="results">Results</h3>
       <table class="table table-condensed">
         <tr>
           <td>Total No of Physical Servers for Virtualization</td>

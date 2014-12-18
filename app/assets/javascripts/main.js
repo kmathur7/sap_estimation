@@ -1,16 +1,14 @@
 angular.module('Saps',['ngRoute','angular-loading-bar','angularFileUpload'])
 
    .factory('dataService',function(){
-		var selection;
+		
     var calculation;
 		return {
-			setData : function(select,calculate){
-				selection=select;
+			setData : function(calculate){
+				
         calculation=calculate;
 			},
-			getSelection : function(){
-				return selection;
-			},
+			
       getCalculation : function(){
 				return calculation;
 			}
@@ -77,7 +75,7 @@ angular.module('Saps',['ngRoute','angular-loading-bar','angularFileUpload'])
       $http.post('./qsizer',selection)
 	       .success(function(data){
                                console.log(data.qsizer);
-		                           dataService.setData(selection,data.qsizer);
+		                           dataService.setData(data.qsizer);
                                $rootScope.$broadcast('analyticsData');
 
                                 
@@ -89,28 +87,21 @@ angular.module('Saps',['ngRoute','angular-loading-bar','angularFileUpload'])
 	}])
 
   .controller('AnalyticsCtrl',['$scope','$http','$rootScope','dataService','resultService',function($scope,$http,$rootScope,dataService,resultService){
-		$scope.$on('analyticsData',function(event){
+		 $scope.analyticsdata = [];
+    $scope.$on('analyticsData',function(event){
           console.log("recieved");
-          $scope.selection=dataService.getSelection();
-			    $scope.data=dataService.getCalculation();
+          $scope.analyticsdata.push(dataService.getCalculation());
+			    console.log($scope.analyticsdata);
     });
     $scope.options = ['Physical','Virtual'];
     
     $scope.result=function(){
-			  //console.log($scope.data);
-        var temp = $scope.data;
-       /*  var names = [];
-        temp.forEach(function(entry){
-          names.push(entry.catalog);
-        });
-      console.log(names);
-      */
-      
-      
-        console.log(temp);
-        $http.post('./analyze/data',temp)
+			console.log("data being sent to result calculation")  
+      console.log($scope.analyticsdata);
+       
+        $http.post('./analyze/data',$scope.analyticsdata)
 	       .success(function(data){
-                               console.log("Sent data");
+                               console.log(" result data Sent data");
                                resultService.setResult(data);
 		                           $rootScope.$broadcast('resultData');
 
