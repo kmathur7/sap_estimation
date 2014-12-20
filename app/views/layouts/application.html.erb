@@ -118,7 +118,7 @@
             <span ng-init="catalog='Custom'"></span >
             <select ng-model="catalog" ng-options="item for item in cats">
             </select>
-            <button class="btn btn-primary pull-right" ng-click="calculate()"><a href="#analytics" class="linkcolor">Calculate</a></button>
+            <button class="btn btn-primary pull-right" ng-click="calculate()"><a href="#analytics" class="linkcolor">Add</a></button>
           
         </div>
       </div>
@@ -172,6 +172,7 @@
             </tbody>
         </table>
       <div>
+        <button class="btn btn-primary" ng-click="add()"><a href="#input" class="linkcolor"><strong>+</strong> Add Row</a></button>
         <button class="btn btn-primary pull-right" ng-click="result()"><a href="#results" class="linkcolor">Results</a></button>
       </div>
       </div>

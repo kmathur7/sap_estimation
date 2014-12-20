@@ -110,6 +110,12 @@ angular.module('Saps',['ngRoute','angular-loading-bar','angularFileUpload'])
       console.log("Sent");
       
 		};
+    
+    $scope.add = function(){
+      $('#collapseOne').collapse('show');
+      $('#collapseFour').collapse('hide');
+      
+    };
 	}])
 
   .controller('ResultsCtrl',function($scope,$http,resultService){
