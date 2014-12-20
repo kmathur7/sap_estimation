@@ -16,4 +16,5 @@
 //= scripts
 //= require main
 //= require loading-bar
+//= require controllers/analytics-ctrl.js
 //= require_tree .
