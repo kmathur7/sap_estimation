@@ -212,6 +212,15 @@ footer {
   text-align: left;
 }
 
+.screen{
+  height:100%;
+}
+
+.centerinput{
+  margin:auto;
+  width:45%;
+}
+
 
 
 

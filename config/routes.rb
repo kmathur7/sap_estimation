@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#index'
+  
   resources :landscape
   resources :catalog
   resources :qsizer
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  post 'users/login' => 'login#login'
   get 'qsizer/:catalog/:product' => 'qsizer#platforms'
   get 'qsizer/:product/:platform/:id' => 'qsizer#components'
   post 'analyze/data' => 'qsizer#output'
@@ -33,6 +34,9 @@ Rails.application.routes.draw do
   post 'admin/quicksizer' => 'admin#setquicksizervalues'
   get 'admin/server' => 'admin#getservervalues'
   post 'admin/servercomponent' => 'admin#setservervalues'
+  
+  get '/home' => 'static_pages#index'
+  root 'static_pages#index'
   
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

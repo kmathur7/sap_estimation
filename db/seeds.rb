@@ -15,6 +15,7 @@ Resourceweightage.delete_all
 AssumptionsAtTarget.delete_all
 VmwareHaServerReq.delete_all
 ApplicationToDatabaseRatio.delete_all
+Users.delete_all
 
 Landscape.create!([
   {id: 1, name: "Production"},
@@ -138,5 +139,10 @@ VmwareHaServerReq.create!([
 ApplicationToDatabaseRatio.create!([
   {id: 1, application: 0.65,database: 0.35}
   ])
+Users.create!([
+  {id: 1, username: "admin",password: "kunal", role:"admin"},
+  {id: 2, username: "user",password: "kunal", role:"user"}
+  ])
+
 
 

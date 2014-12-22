@@ -42,8 +42,13 @@ angular.module('Saps').controller('InputCtrl',['$scope','$http','$rootScope','da
 			});
 			$('#collapseThree').collapse('hide');
 			$('#collapseFour').collapse('show');
+      $('#collapseFive').collapse('show');
   		};
-		
+		$scope.setCatalog = function(catalog)
+    {
+      $('#collapseFive').collapse('hide');
+      selection.maincatalog=catalog;
+    };
 		$scope.calculate=function()
 		{
       		selection.component=$scope.components
