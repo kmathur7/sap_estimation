@@ -140,8 +140,11 @@ ApplicationToDatabaseRatio.create!([
   {id: 1, application: 0.65,database: 0.35}
   ])
 Users.create!([
-  {id: 1, username: "admin",password: "kunal", role:"admin"},
-  {id: 2, username: "user",password: "kunal", role:"user"}
+  {id: 1, username: "admin",password: "admin123", role:"admin"},
+  {id: 2, username: "user1",password: "password", role:"user"},
+  {id: 3, username: "user2",password: "password", role:"user"},
+  {id: 4, username: "user3",password: "password", role:"user"},
+  {id: 5, username: "user4",password: "password", role:"user"}
   ])
 
 

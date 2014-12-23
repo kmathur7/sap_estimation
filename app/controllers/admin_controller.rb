@@ -98,4 +98,15 @@ class AdminController < ApplicationController
     Component.import(params[:file].path)
   end
   
+  # Action to fetch all users with role "users"
+  def showusers
+    @users = Users.all.pluck(:username)
+    
+  end
+  
+  #Action to fetch a user's info
+  def fetchuser
+    @user = Users.where("username=?",params[:id])
+  end
+  
 end

@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   post 'admin/quicksizer' => 'admin#setquicksizervalues'
   get 'admin/server' => 'admin#getservervalues'
   post 'admin/servercomponent' => 'admin#setservervalues'
+  get 'admin/users' => 'admin#showusers'
+  get 'admin/users/:id' => 'admin#fetchuser'
   
   get '/home' => 'static_pages#index'
   root 'static_pages#index'
