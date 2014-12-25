@@ -12,6 +12,7 @@ angular.module('Saps').controller('AnalyticsCtrl',['$scope','$http','$rootScope'
 		$http.post('./analyze/data',$scope.analyticsdata).success(function(data)
     {
       resultService.setResult(data);
+      resultService.setPdfData($scope.analyticsdata);
 		  $rootScope.$broadcast('resultData');
     });
   };

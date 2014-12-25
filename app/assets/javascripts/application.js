@@ -17,4 +17,6 @@
 //= require main
 //= require loading-bar
 //= require controllers/analytics-ctrl.js
+//= require pdfmake
+//= require vfs_fonts
 //= require_tree .
