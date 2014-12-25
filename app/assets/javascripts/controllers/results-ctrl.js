@@ -11,7 +11,6 @@ angular.module('Saps').controller('ResultsCtrl',['$scope','$http','resultService
   
     $scope.print = function(){
       var results = $scope.results;
-      console.log(results);
       var temp;
       var body = [];
       var heading = new Array();

@@ -1,4 +1,4 @@
-angular.module('Saps',['ui.router','angular-loading-bar','angularFileUpload'])
+angular.module('Saps',['ui.router','angular-loading-bar','angularFileUpload','duScroll'])
 
   .config(function($stateProvider, $urlRouterProvider,$locationProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
