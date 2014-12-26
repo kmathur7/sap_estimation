@@ -5,6 +5,12 @@ angular.module('Saps').controller('AnalyticsCtrl',['$scope','$http','$rootScope'
   {
       $scope.analyticsdata.push(dataService.getCalculation());
 	});
+  
+   $scope.$on('reset',function(event)
+    {
+      $scope.analyticsdata = [];
+       
+    });
   $scope.options = ['Physical','Virtual'];
     
   $scope.result=function()

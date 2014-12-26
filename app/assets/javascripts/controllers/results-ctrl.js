@@ -1,4 +1,4 @@
-angular.module('Saps').controller('ResultsCtrl',['$scope','$http','resultService',function($scope,$http,resultService)
+angular.module('Saps').controller('ResultsCtrl',['$scope','$http','resultService','$rootScope',function($scope,$http,resultService,$rootScope)
 {
     var pdfdatacontent = [];
     
@@ -8,6 +8,18 @@ angular.module('Saps').controller('ResultsCtrl',['$scope','$http','resultService
       pdfdatacontent = resultService.getPdfData();
        
     });
+  
+    $scope.reset = function()
+    {
+      $('#collapseOne').collapse('show');
+      $('#collapseTwo').collapse('hide');
+      $('#collapseThree').collapse('hide');
+      $('#collapseFour').collapse('hide');
+      $('#collapseFive').collapse('hide');
+    $rootScope.$broadcast('reset');
+    $scope.results={};
+    pdfdatacontent=[];
+    };
   
     $scope.print = function(){
       var results = $scope.results;

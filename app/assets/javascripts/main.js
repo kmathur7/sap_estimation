@@ -28,23 +28,19 @@ angular.module('Saps',['ui.router','angular-loading-bar','angularFileUpload','du
         .state('home', {
             url: '/home',
             templateUrl: '../templates/home.html',
-          controller:'MainCtrl'
+          
             // we'll get to this in a bit       
         });
     
         
   })
-  .controller('MainCtrl',['$scope','$location','$anchorScroll','loginService',function($scope,$location,$anchorScroll,loginService){
-    $scope.scrollTo = function(id) {
-      $location.hash(id);
-      $anchorScroll();
-   };
-    
-   
-    
-  }])
+  
 
   .controller('LoginController',['$scope','$http','loginService','$rootScope','$state',function($scope,$http,loginService,$rootScope,$state){
+    $scope.incorrect_password=false;
+    $scope.close = function(){
+      $scope.incorrect_password=false;
+    };
     $scope.login = function(){
        $http.post('../users/login',$scope.user).success(function(data)
     {
@@ -56,6 +52,7 @@ angular.module('Saps',['ui.router','angular-loading-bar','angularFileUpload','du
     }).error(function (data, status, headers, config) {
         console.log("error");
         console.log(status);
+         $scope.incorrect_password=true;
 });
     };
    

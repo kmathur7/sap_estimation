@@ -58,5 +58,16 @@ angular.module('Saps').controller('InputCtrl',['$scope','$http','$rootScope','da
                 $rootScope.$broadcast('analyticsData');
 			});
 		};
+  
+    $scope.$on('reset',function(event)
+    {
+      selection={
+			            landscape:"",
+			            maincatalog:"",
+			            product:"",
+			            platform:"",
+			            component:{}
+		  };
+    });
 
 	}]);

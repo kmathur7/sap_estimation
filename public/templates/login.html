@@ -7,13 +7,21 @@
       <form role="form" class="vert" ng-controller="LoginController">
   <div class="form-group">
     
-      <input type="name" class="form-control centerinput" id="exampleInputEmail2" ng-model="user.username" placeholder="Username">
+      <input type="name" class="form-control centerinput" id="exampleInputEmail2" ng-model="user.username" placeholder="Username" required>
     
   </div>
   <div class="form-group">
     
-    <input type="password" class="form-control centerinput" id="exampleInputPassword2" ng-model="user.password" placeholder="Password">
+    <input type="password" class="form-control centerinput" id="exampleInputPassword2" ng-model="user.password" placeholder="Password" required>
       
+  </div>
+
+  <div class="form-group" ng-show="incorrect_password" ng-click="close()">
+    <div class="alert alert-danger centerinput" role="alert">
+      
+        <strong>Error!</strong> Incorrect Username or Password !
+        <span aria-hidden="true" class="close">&times;</span>
+    </div>  
   </div>
  
   <button type="submit" ng-click="login()" class="btn btn-default">Sign in</button>
