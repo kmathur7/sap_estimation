@@ -1,4 +1,4 @@
-angular.module('Saps').factory('dataService',function()
+angular.module('Saps').factory('dataService',[function()
 {
   var calculation;
   return {
@@ -11,4 +11,4 @@ angular.module('Saps').factory('dataService',function()
         return calculation;
       }
     };
-});
+}]);

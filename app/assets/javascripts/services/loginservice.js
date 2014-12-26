@@ -1,4 +1,4 @@
-angular.module('Saps').factory('loginService',function($state)
+angular.module('Saps').factory('loginService',['$state',function($state)
 {
   var role;
   return {
@@ -17,4 +17,4 @@ angular.module('Saps').factory('loginService',function($state)
       $state.go('/');
     }
     };
-});
+}]);

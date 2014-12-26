@@ -1,4 +1,4 @@
-angular.module('Saps').factory('resultService',function()
+angular.module('Saps').factory('resultService',[function()
 {
     var result;
     var pdfdata;
@@ -20,4 +20,4 @@ angular.module('Saps').factory('resultService',function()
         return pdfdata;
       }
     };
-});
+}]);

@@ -1,6 +1,6 @@
 angular.module('Saps',['ui.router','angular-loading-bar','angularFileUpload','duScroll'])
 
-  .config(function($stateProvider, $urlRouterProvider,$locationProvider) {
+  .config(['$stateProvider','$urlRouterProvider','$locationProvider',function($stateProvider, $urlRouterProvider,$locationProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
     $urlRouterProvider.otherwise('/');
     
@@ -33,7 +33,7 @@ angular.module('Saps',['ui.router','angular-loading-bar','angularFileUpload','du
         });
     
         
-  })
+  }])
   
 
   .controller('LoginController',['$scope','$http','loginService','$rootScope','$state',function($scope,$http,loginService,$rootScope,$state){
@@ -82,7 +82,7 @@ angular.module('Saps',['ui.router','angular-loading-bar','angularFileUpload','du
   }])
   
 
- .directive('upVote', function(){
+ .directive('upVote',[ function(){
   return    {
     restrict:'E',
     scope:{
@@ -96,7 +96,7 @@ angular.module('Saps',['ui.router','angular-loading-bar','angularFileUpload','du
       '<button class="btn btn-primary" ng-click="value = value - 1" ng-disabled="value <= min">-</button>' + 
     '</span>'
   }
-  });
+  }]);
 var selection={
 			landscape:"",
 			maincatalog:"",
