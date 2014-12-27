@@ -35,6 +35,21 @@ class AdminController < ApplicationController
     @design = Designrationale.update(params[:id],:pcore => params[:pcore], :pram => params[:pram], :pnic => params[:pnic])
   end
   
+  # Action to add new landscape & its Design Rationale Values.
+  def newdesignrationale
+    puts params[:landscape]
+    @design = Designrationale.create(:landscape => params[:landscape], :pcore => params[:pcore].to_i, :pram => params[:pram].to_i,:pnic => params[:pnic].to_i )
+    @landscape = Landscape.create(:name => params[:landscape].to_s)
+  end
+  
+  # Action to delete Design Rationale Values and the corresponding Landscape Value. 
+  def deletedesignrationale
+    @design = Designrationale.find(params[:id])
+    if @design.destroy
+      Landscape.where("name=?",@design.landscape).destroy_all
+    end
+  end
+  
   # Action to fetch Application to Database Ratio Values
   def getapptodb
     @apptodb = ApplicationToDatabaseRatio.find(1)

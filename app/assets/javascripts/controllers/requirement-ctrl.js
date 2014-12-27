@@ -1,9 +1,14 @@
 angular.module('Saps').controller('ReqCtrl',['$scope','$http',function($scope,$http)
 {
-  $http.get('../admin/vmware/1').success(function(data)
+  
+  $scope.$on('settings',function(event)
   {
-    $scope.require=data.req;
-  });
+        $http.get('../admin/vmware/1').success(function(data)
+              {
+                $scope.require=data.req;
+              });
+	});
+  
      
   $scope.save = function()
   {

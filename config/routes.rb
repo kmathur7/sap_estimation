@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post 'admin/assumptionstarget/' => 'admin#setassumptionstarget'
   get 'admin/design/:landscape' => 'admin#getdesignrationale'
   post 'admin/design/' => 'admin#setdesignrationale'
+  delete 'admin/deldesign/:id' => 'admin#deletedesignrationale'
+  post 'admin/designnew/' => 'admin#newdesignrationale'
   get 'admin/apptodb/:id' =>'admin#getapptodb'
   post 'admin/apptodb/' =>'admin#setapptodb'
   get 'admin/vmware/:id' => 'admin#getvmhaserverreqq'

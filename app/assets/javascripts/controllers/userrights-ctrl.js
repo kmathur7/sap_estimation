@@ -1,9 +1,13 @@
 angular.module('Saps').controller('UserRightsController',['$scope','$http',function($scope,$http)
 {
-  $http.get('../admin/users').success(function(data)
+  $scope.$on('settings',function(event)
   {
-    $scope.users=data.users;
-  });
+        $http.get('../admin/users').success(function(data)
+              {
+                $scope.users=data.users;
+              });
+	});
+  
   
   $scope.fetchUser = function(user)
   {

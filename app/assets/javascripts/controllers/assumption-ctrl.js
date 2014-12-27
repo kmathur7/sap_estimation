@@ -1,9 +1,12 @@
 angular.module('Saps').controller('AssumptionsTargetCtrl',['$scope','$http',function($scope,$http)
 {
-  $http.get('../admin/assumptionstarget/1').success(function(data)
+  $scope.$on('settings',function(event)
   {
-    $scope.percentage=data.assumptions;
-  });
+        $http.get('../admin/assumptionstarget/1').success(function(data)
+          {
+            $scope.percentage=data.assumptions;
+          });
+	});
   
   $scope.$watch('percentage', function()
   {

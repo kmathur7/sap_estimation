@@ -1,9 +1,13 @@
 angular.module('Saps').controller('BladeCtrl',['$scope','$http',function($scope,$http)
 {
-  $http.get('../admin/bladeparameters/1').success(function(data)
+   $scope.$on('settings',function(event)
   {
-    $scope.parameters=data.parameters;
-  });
+        $http.get('../admin/bladeparameters/1').success(function(data)
+        {
+          $scope.parameters=data.parameters;
+        });
+	});
+  
     
   $scope.save = function()
   {

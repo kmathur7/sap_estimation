@@ -1,9 +1,14 @@
 angular.module('Saps').controller('ApptodbCtrl',['$scope','$http',function($scope,$http)
 {
-  $http.get('../admin/apptodb/1').success(function(data)
+  $scope.$on('settings',function(event)
   {
-    $scope.application=data.application;
-  });
+        $http.get('../admin/apptodb/1').success(function(data)
+          {
+            $scope.application=data.application;
+          });
+	});
+  
+  
   
   $scope.$watch('application', function()
   {

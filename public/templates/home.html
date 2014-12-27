@@ -13,7 +13,7 @@
       <li><a href="#input" du-smooth-scroll duration="900">Input</a></li>
       <li><a href="#analytics" du-smooth-scroll duration="900">Analytics</a></li>
       <li><a href="#results" du-smooth-scroll duration="900">Results</a></li>
-      <li ng-if="settings"><a href="" data-toggle="modal" data-target="#myModal">Settings</a></li>
+      <li ng-if="settings"><a href="" data-toggle="modal" data-target="#myModal" ng-click="fetchsettings()">Settings</a></li>
       <li ng-click="logout()"><a>Log Out</a></li>
       
       </ul>
@@ -238,23 +238,21 @@
       <div class="modal-body">
           <div class="row">
             <div class="col-lg-6 col-md-6" ng-controller="DesignCtrl">
-              <div>
+              <div ng-init="newentry.landscape=''; newentry.pcore=0 ;newentry.pram=0; newentry.pnic=0;">
                   <h4>Design Rationale <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     {{selection}} <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="" ng-click="fetch('Production')">Production</a></li>
+                      <li><a href="" ng-click="fetch(landscape.name)" ng-repeat="landscape in landscapes">{{landscape.name}}</a></li>
                       <li class="divider"></li>
-                      <li><a href="" ng-click="fetch('Pre-Production')">Pre-Production</a></li>
-                      <li><a href="" ng-click="fetch('Development')">Development</a></li>
-                      <li><a href="" ng-click="fetch('Staging')">Staging</a></li>
-                      <li><a href="" ng-click="fetch('Testing')">Testing</a></li>
+                      <li><a href="" ng-click="entry()"><strong>+</strong> New</a></li>
                     </ul>
                   </div></h4>
                   
               </div>
-              <form class="form-horizontal" role="form">
+              <form class="form-horizontal" role="form" ng-if="!new_landscape">
+                
                 <div class="form-group">
                   <label for="pCoreValue" class="col-lg-3">1 pCore</label>
                         <div class="col-lg-4">
@@ -277,6 +275,39 @@
                   <div class="col-lg-5">vCPU in Qty</div>
                 </div>
                 <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+                <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+              </form>
+              <form class="form-horizontal" role="form" ng-if="new_landscape">
+                <div class="form-group">
+                  <label for="Name" class="col-lg-3">Name</label>
+                        <div class="col-lg-8">
+                    <input type="text" ng-model="newentry.landscape" class="form-control" id="Name" placeholder="Landscape Name" required> 
+                        </div>
+                        
+                </div>
+                <div class="form-group">
+                  <label for="pCoreValue" class="col-lg-3">1 pCore</label>
+                        <div class="col-lg-4">
+                    <input type="number" ng-model="newentry.pcore" class="form-control" id="pCoreValue">
+                        </div>
+                        <div class="col-lg-5">vCPU in Qty</div>
+                </div>
+                <div class="form-group">
+                  <label for="pRAMValue" class="col-lg-3">1 pRAM</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="newentry.pram" class="form-control" id="pRAMValue">
+                  </div>
+                  <div class="col-lg-5">vRAM in GB</div>
+                </div>
+                <div class="form-group">
+                  <label for="pNICValue" class="col-lg-3">1 pNIC</label>
+                  <div class="col-lg-4">
+                    <input type="number" ng-model="newentry.pnic" class="form-control" id="pNICValue">
+                  </div>
+                  <div class="col-lg-5">vCPU in Qty</div>
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="savenew()">Save</button>
+                
               </form>
             </div>
             <div class="col-lg-6 col-md-6" ng-controller="BladeCtrl">

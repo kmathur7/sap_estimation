@@ -5,6 +5,14 @@ angular.module('Saps').controller('InputCtrl',['$scope','$http','$rootScope','da
 		$http.get('./landscape').success(function(data){
 			$scope.landscapes=data.landscape;
 		});
+  
+     $scope.$on('newlandscape',function(event)
+     {
+       $http.get('./landscape').success(function(data)
+             {
+			        $scope.landscapes=data.landscape;
+		          });
+	   });
 
 		$scope.setLandscape=function(landscape)
 		{
